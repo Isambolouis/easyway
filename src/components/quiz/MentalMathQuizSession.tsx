@@ -24,6 +24,9 @@ import {
 
 type Phase = 'idle' | 'playing' | 'finished'
 
+/** Temps d’affichage du feedback avant la question suivante */
+const FEEDBACK_PAUSE_MS = 2800
+
 type AnswerRecord = {
   question: MentalMathQuestion
   userAnswer: string
@@ -131,7 +134,7 @@ export function MentalMathQuizSession() {
           timeoutHandled.current = false
           inputRef.current?.focus()
         }
-      }, 900)
+      }, FEEDBACK_PAUSE_MS)
     },
     [index, questions],
   )
