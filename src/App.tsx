@@ -3,6 +3,7 @@ import { AppShell } from '@/components/layout/AppShell'
 import { HubPage } from '@/pages/HubPage'
 import { CourseHomePage } from '@/pages/CourseHomePage'
 import { LessonPage } from '@/pages/LessonPage'
+import { QuizPage } from '@/pages/QuizPage'
 
 function LegacyChapterRedirect() {
   const { slug } = useParams<{ slug: string }>()
@@ -15,6 +16,7 @@ export default function App() {
       <AppShell>
         <Routes>
           <Route path="/" element={<HubPage />} />
+          <Route path="/quiz/:categoryId" element={<QuizPage />} />
           <Route path="/cours/:courseId" element={<CourseHomePage />} />
           <Route path="/cours/:courseId/:slug" element={<LessonPage />} />
           <Route path="/chapitre/:slug" element={<LegacyChapterRedirect />} />

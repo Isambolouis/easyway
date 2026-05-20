@@ -1,4 +1,5 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
+import { getQuizCategory } from '@/content/quizCategories'
 import { ArrowUp, FileDown, Menu, X } from 'lucide-react'
 import { getCourseFromPath } from '@/content/courseRegistry'
 
@@ -10,6 +11,9 @@ export function Header({
   onToggleSidebar: () => void
 }) {
   const { courseId } = useParams<{ courseId: string }>()
+  const location = useLocation()
+  const quizMatch = location.pathname.match(/^\/quiz\/([^/]+)/)
+  const quizCat = quizMatch ? getQuizCategory(quizMatch[1]!) : null
   const course = courseId ? getCourseFromPath(courseId) : null
 
   return (
@@ -24,9 +28,13 @@ export function Header({
           >
             {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-          <Link to={course?.basePath ?? '/'} className="min-w-0">
-            <p className="truncate text-sm font-bold text-deep">{course?.title ?? 'Bibliothèque de cours'}</p>
-            <p className="truncate text-xs text-muted">{course?.subtitle ?? 'Deep Learning, Algèbre & Équations'}</p>
+          <Link to={quizCat ? '/quiz/calcul-mental' : course?.basePath ?? '/'} className="min-w-0">
+            <p className="truncate text-sm font-bold text-deep">
+              {quizCat ? `Quiz — ${quizCat.title}` : course?.title ?? 'Bibliothèque de cours'}
+            </p>
+            <p className="truncate text-xs text-muted">
+              {quizCat ? 'Entraînement interactif' : course?.subtitle ?? 'Deep Learning, Algèbre & Équations'}
+            </p>
           </Link>
         </div>
         <div className="flex shrink-0 items-center gap-2">
