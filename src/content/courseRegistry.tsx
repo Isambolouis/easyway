@@ -1,7 +1,11 @@
 import { deepLearningChapters, getDeepLearningChapter } from './deepLearningChapters'
 import { linearAlgebraChapters, getLinearAlgebraChapter } from './linearAlgebraChapters'
+import { equationsChapters, getEquationsChapter } from './equationsChapters'
+import { functionsChapters, getFunctionsChapter } from './functionsChapters'
 import { chapterViews as deepLearningViews } from '@/chapters/chapterViews'
 import { linearAlgebraViews, ComingSoonLesson } from '@/chapters/linearAlgebraViews'
+import { equationsViews, EquationsComingSoon } from '@/chapters/equationsViews'
+import { functionsViews, FunctionsComingSoon } from '@/chapters/functionsViews'
 import type { ChapterMeta } from '@/types/course'
 import type { ReactNode } from 'react'
 import { getCourseBySlug } from './courses'
@@ -9,12 +13,16 @@ import { getCourseBySlug } from './courses'
 export function getChaptersForCourse(courseSlug: string): ChapterMeta[] {
   if (courseSlug === 'deep-learning') return deepLearningChapters
   if (courseSlug === 'algebre-lineaire') return linearAlgebraChapters
+  if (courseSlug === 'equations-mathematiques') return equationsChapters
+  if (courseSlug === 'fonctions-mathematiques') return functionsChapters
   return []
 }
 
 export function getChapter(courseSlug: string, lessonSlug: string) {
   if (courseSlug === 'deep-learning') return getDeepLearningChapter(lessonSlug)
   if (courseSlug === 'algebre-lineaire') return getLinearAlgebraChapter(lessonSlug)
+  if (courseSlug === 'equations-mathematiques') return getEquationsChapter(lessonSlug)
+  if (courseSlug === 'fonctions-mathematiques') return getFunctionsChapter(lessonSlug)
   return undefined
 }
 
@@ -28,6 +36,20 @@ export function getLessonView(courseSlug: string, lessonSlug: string): (() => Re
     if (v) return v
     const meta = getLinearAlgebraChapter(lessonSlug)
     if (meta?.comingSoon) return () => <ComingSoonLesson title={meta.title} />
+    return null
+  }
+  if (courseSlug === 'equations-mathematiques') {
+    const v = equationsViews[lessonSlug]
+    if (v) return v
+    const meta = getEquationsChapter(lessonSlug)
+    if (meta?.comingSoon) return () => <EquationsComingSoon title={meta.title} />
+    return null
+  }
+  if (courseSlug === 'fonctions-mathematiques') {
+    const v = functionsViews[lessonSlug]
+    if (v) return v
+    const meta = getFunctionsChapter(lessonSlug)
+    if (meta?.comingSoon) return () => <FunctionsComingSoon title={meta.title} />
     return null
   }
   return null

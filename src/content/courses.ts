@@ -1,4 +1,4 @@
-import { Brain, Sigma } from 'lucide-react'
+import { Brain, Sigma, Equal, FunctionSquare } from 'lucide-react'
 import type { CourseMeta } from '@/types/course'
 
 export const courses: CourseMeta[] = [
@@ -24,6 +24,28 @@ export const courses: CourseMeta[] = [
     chapterLabel: 'Leçon',
     basePath: '/cours/algebre-lineaire',
   },
+  {
+    id: 'equations-mathematiques',
+    slug: 'equations-mathematiques',
+    title: 'Équations mathématiques',
+    subtitle: 'De A à Z — bases solides',
+    description:
+      'Équations, inconnues, premier degré, quadratiques et systèmes — progressif et illustré, pour maîtriser l’algèbre.',
+    accent: 'amber',
+    chapterLabel: 'Leçon',
+    basePath: '/cours/equations-mathematiques',
+  },
+  {
+    id: 'fonctions-mathematiques',
+    slug: 'fonctions-mathematiques',
+    title: 'Fonctions mathématiques',
+    subtitle: 'Du concept aux applications',
+    description:
+      'Définition, domaine, graphiques, fonctions classiques, composition et applications en IA — cours progressif.',
+    accent: 'rose',
+    chapterLabel: 'Leçon',
+    basePath: '/cours/fonctions-mathematiques',
+  },
 ]
 
 export function getCourseBySlug(slug: string) {
@@ -33,4 +55,6 @@ export function getCourseBySlug(slug: string) {
 export const courseIcons: Record<string, typeof Brain> = {
   'deep-learning': Brain,
   'algebre-lineaire': Sigma,
+  'equations-mathematiques': Equal,
+  'fonctions-mathematiques': FunctionSquare,
 }

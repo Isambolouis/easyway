@@ -3,6 +3,8 @@ import { getChaptersForCourse, getCourseFromPath } from '@/content/courseRegistr
 import { cn } from '@/lib/utils'
 import { ChevronRight, Lock } from 'lucide-react'
 import { algebraLevels, chaptersByLevel } from '@/content/linearAlgebraChapters'
+import { equationLevels, equationsChaptersByLevel } from '@/content/equationsChapters'
+import { functionLevels, functionsChaptersByLevel } from '@/content/functionsChapters'
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { courseId } = useParams<{ courseId: string }>()
@@ -21,6 +23,68 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   }
 
   const isAlgebra = courseId === 'algebre-lineaire'
+  const isEquations = courseId === 'equations-mathematiques'
+  const isFunctions = courseId === 'fonctions-mathematiques'
+
+  const levelNav = (
+    levels: { id: number; title: string }[],
+    byLevel: (n: number) => ReturnType<typeof getChaptersForCourse>,
+    accent: 'violet' | 'amber' | 'rose',
+  ) =>
+    levels.map((level) => (
+      <div key={level.id} className="mb-3">
+        <p
+          className={cn(
+            'px-2 py-1 text-[10px] font-bold uppercase tracking-wider',
+            accent === 'violet' ? 'text-violet-600' : accent === 'amber' ? 'text-amber-700' : 'text-rose-700',
+          )}
+        >
+          P.{level.id} — {level.title}
+        </p>
+        {byLevel(level.id).map((ch) => {
+          const Icon = ch.icon
+          const locked = ch.comingSoon
+          return (
+            <NavLink
+              key={ch.slug}
+              to={locked ? '#' : `${course!.basePath}/${ch.slug}`}
+              onClick={(e) => {
+                if (locked) e.preventDefault()
+                else onNavigate?.()
+              }}
+              className={({ isActive }) =>
+                cn(
+                  'group flex items-start gap-2 rounded-xl px-2 py-2 text-sm transition',
+                  locked && 'cursor-not-allowed opacity-60',
+                  isActive && !locked
+                    ? accent === 'violet'
+                      ? 'bg-violet-600 text-white shadow-md'
+                      : accent === 'amber'
+                        ? 'bg-amber-600 text-white shadow-md'
+                        : 'bg-rose-600 text-white shadow-md'
+                    : accent === 'violet'
+                      ? 'text-ink/80 hover:bg-violet-50 hover:text-violet-900'
+                      : accent === 'amber'
+                        ? 'text-ink/80 hover:bg-amber-50 hover:text-amber-900'
+                        : 'text-ink/80 hover:bg-rose-50 hover:text-rose-900',
+                )
+              }
+            >
+              <Icon className="mt-0.5 h-4 w-4 shrink-0" />
+              <span className="min-w-0 flex-1 leading-snug">
+                <span className="block text-[10px] opacity-80">L.{ch.number}</span>
+                {ch.title}
+              </span>
+              {locked ? (
+                <Lock className="h-3.5 w-3.5 shrink-0 opacity-50" />
+              ) : (
+                <ChevronRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-60 [[aria-current=page]_&]:opacity-100" />
+              )}
+            </NavLink>
+          )
+        })}
+      </div>
+    ))
 
   return (
     <nav className="flex flex-col gap-1 p-3" aria-label="Sommaire">
@@ -30,48 +94,12 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       <p className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-muted">{course.title}</p>
 
       {isAlgebra
-        ? algebraLevels.map((level) => (
-            <div key={level.id} className="mb-3">
-              <p className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-violet-600">
-                N{level.id} — {level.title}
-              </p>
-              {chaptersByLevel(level.id).map((ch) => {
-                const Icon = ch.icon
-                const locked = ch.comingSoon
-                return (
-                  <NavLink
-                    key={ch.slug}
-                    to={locked ? '#' : `${course.basePath}/${ch.slug}`}
-                    onClick={(e) => {
-                      if (locked) e.preventDefault()
-                      else onNavigate?.()
-                    }}
-                    className={({ isActive }) =>
-                      cn(
-                        'group flex items-start gap-2 rounded-xl px-2 py-2 text-sm transition',
-                        locked && 'cursor-not-allowed opacity-60',
-                        isActive && !locked
-                          ? 'bg-violet-600 text-white shadow-md'
-                          : 'text-ink/80 hover:bg-violet-50 hover:text-violet-900',
-                      )
-                    }
-                  >
-                    <Icon className="mt-0.5 h-4 w-4 shrink-0" />
-                    <span className="min-w-0 flex-1 leading-snug">
-                      <span className="block text-[10px] opacity-80">L.{ch.number}</span>
-                      {ch.title}
-                    </span>
-                    {locked ? (
-                      <Lock className="h-3.5 w-3.5 shrink-0 opacity-50" />
-                    ) : (
-                      <ChevronRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-60 [[aria-current=page]_&]:opacity-100" />
-                    )}
-                  </NavLink>
-                )
-              })}
-            </div>
-          ))
-        : chapters.map((ch) => {
+        ? levelNav(algebraLevels, chaptersByLevel, 'violet')
+        : isEquations
+          ? levelNav(equationLevels, equationsChaptersByLevel, 'amber')
+          : isFunctions
+            ? levelNav(functionLevels, functionsChaptersByLevel, 'rose')
+            : chapters.map((ch) => {
             const Icon = ch.icon
             return (
               <NavLink

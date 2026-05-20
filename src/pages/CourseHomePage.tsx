@@ -3,6 +3,8 @@ import { getChaptersForCourse, getCourseFromPath } from '@/content/courseRegistr
 import { FadeIn } from '@/components/ui/FadeIn'
 import { ArrowRight, Lock } from 'lucide-react'
 import { AlgebraCoursePlan } from '@/components/algebra/AlgebraCoursePlan'
+import { EquationsCoursePlan } from '@/components/equations/EquationsCoursePlan'
+import { FunctionsCoursePlan } from '@/components/functions/FunctionsCoursePlan'
 import { cn } from '@/lib/utils'
 
 export function CourseHomePage() {
@@ -13,16 +15,45 @@ export function CourseHomePage() {
   if (!course) return <Navigate to="/" replace />
 
   const isAlgebra = courseId === 'algebre-lineaire'
+  const isEquations = courseId === 'equations-mathematiques'
+  const isFunctions = courseId === 'fonctions-mathematiques'
+  const badgeBg =
+    course.accent === 'violet'
+      ? 'bg-violet-600'
+      : course.accent === 'amber'
+        ? 'bg-amber-600'
+        : course.accent === 'rose'
+          ? 'bg-rose-600'
+          : 'bg-teal'
+  const cardBorder =
+    course.accent === 'violet'
+      ? 'border-violet-200 hover:border-violet-400'
+      : course.accent === 'amber'
+        ? 'border-amber-200 hover:border-amber-400'
+        : course.accent === 'rose'
+          ? 'border-rose-200 hover:border-rose-400'
+          : 'border-slate-200 hover:border-teal/40'
+  const iconColor =
+    course.accent === 'violet'
+      ? 'text-violet-600'
+      : course.accent === 'amber'
+        ? 'text-amber-700'
+        : course.accent === 'rose'
+          ? 'text-rose-700'
+          : 'text-teal'
+  const linkColor =
+    course.accent === 'violet'
+      ? 'text-violet-700'
+      : course.accent === 'amber'
+        ? 'text-amber-700'
+        : course.accent === 'rose'
+          ? 'text-rose-700'
+          : 'text-teal'
 
   return (
     <div className="max-w-4xl">
       <FadeIn>
-        <span
-          className={cn(
-            'inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white',
-            isAlgebra ? 'bg-violet-600' : 'bg-teal',
-          )}
-        >
+        <span className={cn('inline-block rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white', badgeBg)}>
           {course.chapterLabel}s interactifs
         </span>
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-deep">{course.title}</h1>
@@ -31,9 +62,11 @@ export function CourseHomePage() {
       </FadeIn>
 
       {isAlgebra && <AlgebraCoursePlan />}
+      {isEquations && <EquationsCoursePlan />}
+      {isFunctions && <FunctionsCoursePlan />}
 
       <h2 className="mt-10 text-xl font-bold text-deep">
-        {isAlgebra ? 'Commencer par la leçon 1' : 'Chapitres'}
+        {isAlgebra || isEquations || isFunctions ? 'Commencer par la leçon 1' : 'Chapitres'}
       </h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         {chapters.map((ch, i) => {
@@ -58,21 +91,16 @@ export function CourseHomePage() {
                   to={`${course.basePath}/${ch.slug}`}
                   className={cn(
                     'group flex h-full flex-col rounded-2xl border bg-white p-5 shadow-md transition hover:-translate-y-1 hover:shadow-lg',
-                    isAlgebra ? 'border-violet-200 hover:border-violet-400' : 'border-slate-200 hover:border-teal/40',
+                    cardBorder,
                   )}
                 >
-                  <Icon className={cn('mb-3 h-5 w-5', isAlgebra ? 'text-violet-600' : 'text-teal')} />
+                  <Icon className={cn('mb-3 h-5 w-5', iconColor)} />
                   <p className="text-xs font-bold text-muted">
                     {course.chapterLabel} {ch.number}
                   </p>
                   <h3 className="font-semibold text-deep group-hover:text-teal">{ch.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted">{ch.description}</p>
-                  <span
-                    className={cn(
-                      'mt-4 inline-flex items-center gap-1 text-sm font-semibold',
-                      isAlgebra ? 'text-violet-700' : 'text-teal',
-                    )}
-                  >
+                  <span className={cn('mt-4 inline-flex items-center gap-1 text-sm font-semibold', linkColor)}>
                     Lire <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </span>
                 </Link>

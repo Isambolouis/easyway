@@ -26,7 +26,7 @@ export function Header({
           </button>
           <Link to={course?.basePath ?? '/'} className="min-w-0">
             <p className="truncate text-sm font-bold text-deep">{course?.title ?? 'Bibliothèque de cours'}</p>
-            <p className="truncate text-xs text-muted">{course?.subtitle ?? 'Deep Learning & Algèbre linéaire'}</p>
+            <p className="truncate text-xs text-muted">{course?.subtitle ?? 'Deep Learning, Algèbre & Équations'}</p>
           </Link>
         </div>
         <div className="flex shrink-0 items-center gap-2">

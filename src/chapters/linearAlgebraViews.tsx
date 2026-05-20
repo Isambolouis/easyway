@@ -729,7 +729,108 @@ print(x)  # [2. 1.]`}
       <Lesson7SystemesExercises />
 
       <Callout variant="resume">
-        Passe à la <strong>leçon 8 — Produit scalaire et orthogonalité</strong>.
+        Passe à la <strong>leçon 8 — Méthode de Gauss</strong> (résolution systématique des systèmes).
+      </Callout>
+    </>
+  ),
+
+  'methode-gauss': () => (
+    <>
+      <FadeIn>
+        <p className="text-lg text-muted">
+          La <strong className="text-deep">méthode de Gauss</strong> (élimination de Gauss) résout{' '}
+          <strong>n’importe quel système linéaire</strong> — 2, 3, 10 inconnues — sans deviner. C’est une{' '}
+          <strong>combinaison linéaire organisée</strong>.
+        </p>
+      </FadeIn>
+
+      <Callout variant="important" title="Objectif">
+        Transformer le système en forme <strong>équivalent</strong> mais plus simple (triangulaire, puis
+        échelonnée) — <strong>les solutions ne changent jamais</strong>.
+      </Callout>
+
+      <h3 className="mt-10 text-xl font-bold text-deep">Matrice augmentée</h3>
+      <MathBlock tex="\begin{cases}x+y=5\\2x-y=1\end{cases}" />
+      <MathBlock
+        tex="\left(\begin{array}{cc|c}1&1&5\\2&-1&1\end{array}\right)"
+        className="!my-2"
+      />
+
+      <h3 className="mt-10 text-xl font-bold text-deep">Opérations élémentaires sur les lignes</h3>
+      <ol className="list-decimal space-y-1 pl-5 text-muted">
+        <li>Échanger deux lignes</li>
+        <li>Multiplier une ligne par un nombre ≠ 0</li>
+        <li>Ajouter à une ligne un multiple d’une autre</li>
+      </ol>
+
+      <h3 className="mt-10 text-xl font-bold text-deep">Exemple complet pas à pas</h3>
+
+      <div className="space-y-4">
+        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+          <p className="text-sm font-bold text-violet-800">Étape 1 — Éliminer x dans L₂</p>
+          <p className="mt-1 font-mono text-sm">L₂ ← L₂ − 2L₁</p>
+          <p className="mt-1 text-sm text-muted">(2, −1, 1) − 2(1, 1, 5) = (0, −3, −9)</p>
+          <MathBlock tex="\left(\begin{array}{cc|c}1&1&5\\0&-3&-9\end{array}\right)" className="!my-1" />
+        </div>
+        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+          <p className="text-sm font-bold text-violet-800">Étape 2 — Simplifier L₂</p>
+          <p className="mt-1 font-mono text-sm">L₂ ← −(1/3)L₂</p>
+          <MathBlock tex="\left(\begin{array}{cc|c}1&1&5\\0&1&3\end{array}\right)" className="!my-1" />
+        </div>
+        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+          <p className="text-sm font-bold text-violet-800">Étape 3 — Éliminer y dans L₁</p>
+          <p className="mt-1 font-mono text-sm">L₁ ← L₁ − L₂</p>
+          <MathBlock tex="\left(\begin{array}{cc|c}1&0&2\\0&1&3\end{array}\right)" className="!my-1" />
+        </div>
+      </div>
+
+      <Callout variant="definition" title="Lecture des solutions">
+        <MathBlock tex="\begin{cases}x=2\\y=3\end{cases}" className="!my-1" />
+      </Callout>
+
+      <h3 className="mt-10 text-xl font-bold text-deep">Cas particuliers (lignes spéciales)</h3>
+      <DataTable
+        headers={['Ligne augmentée', 'Signification']}
+        rows={[
+          ['(0  0 | 5)', 'Incompatible — aucune solution'],
+          ['(0  0 | 0)', 'Indéterminé — infinité de solutions'],
+        ]}
+      />
+
+      <h3 className="mt-8 text-xl font-bold text-deep">Lien avec le rang</h3>
+      <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
+        <li>Nombre de lignes non nulles après Gauss = <strong>rang</strong></li>
+        <li>rang = nombre d’équations indépendantes</li>
+        <li>rang = nombre d’inconnues → souvent solution unique (système carré)</li>
+      </ul>
+
+      <Accordion title="NumPy — np.linalg.solve (équivalent)" defaultOpen={false}>
+        <pre className="overflow-x-auto rounded-lg bg-slate-900 p-4 text-sm text-slate-100">
+          {`import numpy as np
+
+A = np.array([[1, 1], [2, -1]])
+b = np.array([5, 1])
+x = np.linalg.solve(A, b)
+print(x)  # [2. 3.]`}
+        </pre>
+      </Accordion>
+
+      <QuizCard
+        question="L₂ ← L₂ − 2L₁ sur le système x+y=5, 2x−y=1. Que devient le coefficient sous le 1 de L₂ ?"
+        options={[
+          { id: 'a', label: '0', correct: true },
+          { id: 'b', label: '2', correct: false },
+          { id: 'c', label: '−1', correct: false },
+        ]}
+        explanation="On élimine x : 2 − 2×1 = 0 en première colonne de L₂."
+      />
+
+      <Callout variant="resume" title="Bilan">
+        Matrice augmentée, opérations sur les lignes, forme échelonnée, lecture des solutions, rang.
+      </Callout>
+
+      <Callout variant="important">
+        Leçon suivante&nbsp;: <strong>produit scalaire et orthogonalité</strong> (leçon 9).
       </Callout>
     </>
   ),
@@ -819,7 +920,7 @@ print(x)  # [2. 1.]`}
       <Lesson8DotProductExercises />
 
       <Callout variant="resume">
-        Passe à la <strong>leçon 9 — Projection orthogonale</strong>.
+        Passe à la <strong>leçon 10 — Projection orthogonale</strong>.
       </Callout>
     </>
   ),
