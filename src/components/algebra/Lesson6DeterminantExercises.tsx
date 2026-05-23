@@ -14,7 +14,7 @@ export function Lesson6DeterminantExercises() {
         Exercices — Le déterminant
       </h3>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">1. Calculer det(A) et det(B)</p>
           <p className="mt-2 text-sm text-ink/90">
@@ -43,7 +43,7 @@ export function Lesson6DeterminantExercises() {
         </AnimatePresence>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">2. Interpréter le signe du déterminant</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-ink/90">

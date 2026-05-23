@@ -13,7 +13,7 @@ export function Lesson5Exercises() {
         Exercices pratiques — Leçon 5
       </h3>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">A = [[2, 3], [1, 4]]</p>
           <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-ink/90">

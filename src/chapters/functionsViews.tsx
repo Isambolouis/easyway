@@ -20,7 +20,7 @@ export function FunctionsComingSoon({ title }: { title: string }) {
 
 function FnExample({ lines, result }: { lines: string[]; result?: string }) {
   return (
-    <div className="rounded-xl border border-rose-200 bg-rose-50/50 p-4 font-mono text-sm leading-relaxed">
+    <div className="scroll-x-card rounded-xl border border-rose-200 bg-rose-50/50 p-4 font-mono text-sm leading-relaxed">
       {lines.map((line) => (
         <p key={line} className={line.startsWith('→') ? 'text-muted' : ''}>
           {line}

@@ -10,7 +10,7 @@ export function DataTable({
   className?: string
 }) {
   return (
-    <div className={cn('my-6 overflow-x-auto rounded-2xl border border-slate-200 shadow-md', className)}>
+    <div className={cn('scroll-x-card my-6 rounded-2xl border border-slate-200 shadow-md', className)}>
       <table className="w-full min-w-[320px] border-collapse bg-white text-sm">
         <thead>
           <tr>

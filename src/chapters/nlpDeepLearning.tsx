@@ -151,11 +151,11 @@ export function NlpDeepLearningView() {
 
       <h3 className="mt-10 text-xl font-bold text-deep">6.16 BERT et GPT</h3>
       <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
           <p className="font-bold text-indigo-900">BERT (Google)</p>
           <p className="mt-1 text-sm text-muted">Bidirectionnel — compréhension contextuelle (encodage).</p>
         </div>
-        <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
           <p className="font-bold text-indigo-900">GPT-4 (génération)</p>
           <MathBlock tex="P(w_t\mid w_1,\ldots,w_{t-1})" className="!my-2" />
           <p className="text-sm text-muted">Autoregressif — assistants, code, dialogue.</p>

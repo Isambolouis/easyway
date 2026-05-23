@@ -15,7 +15,7 @@ export function Accordion({
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className="my-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="scroll-x-card my-4 rounded-2xl border border-slate-200 bg-white shadow-sm">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -30,12 +30,15 @@ export function Accordion({
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            className="overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="border-t border-slate-100 px-4 py-3 text-muted">{children}</div>
+            <div className="min-w-0 overflow-x-auto border-t border-slate-100 px-4 py-3 text-muted">
+              {children}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

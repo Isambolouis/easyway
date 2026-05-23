@@ -98,10 +98,10 @@ export function ActivationPlots() {
   return (
     <FadeIn>
       <div className="my-6 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref1)}</div>
-        <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref2)}</div>
-        <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref3)}</div>
-        <div className="rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref4)}</div>
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref1)}</div>
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref2)}</div>
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref3)}</div>
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-2 shadow-sm">{canvas(ref4)}</div>
       </div>
     </FadeIn>
   )

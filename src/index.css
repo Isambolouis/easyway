@@ -59,18 +59,34 @@ body {
   }
 }
 
-/* Panneaux interactifs — défilement horizontal sur mobile */
+/* Conteneurs de leçon — éviter le débordement hors colonne */
 .prose-course {
   min-width: 0;
   max-width: 100%;
 }
 
+/* Cartes (formules, exercices, panneaux) — défilement horizontal sur mobile */
+.scroll-x-card,
 .interactive-panel {
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
+}
+
+.prose-course pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose-course table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .interactive-panel__body {

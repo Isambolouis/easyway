@@ -71,7 +71,7 @@ export function AlgebraExercises() {
       {exercises.map((ex) => {
         const show = openId === ex.id
         return (
-          <div key={ex.id} className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+          <div key={ex.id} className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
             <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
               <p className="font-semibold text-deep">{ex.title}</p>
               <div className="mt-2 text-sm text-ink/90">{ex.prompt}</div>

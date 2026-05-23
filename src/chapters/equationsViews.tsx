@@ -8,7 +8,7 @@ import type { ReactNode } from 'react'
 
 function EquationExample({ steps, result }: { steps: string[]; result: string }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm leading-relaxed">
+    <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm leading-relaxed">
       {steps.map((line) => (
         <p key={line} className={line.startsWith('→') ? 'text-muted' : ''}>
           {line}
@@ -42,7 +42,7 @@ export const equationsViews: Record<string, () => ReactNode> = {
           { label: 'Avec inconnue', ex: 'x + 2 = 7', note: 'On cherche x' },
           { label: 'Linéaire', ex: '2x − 4 = 10', note: 'Forme courante' },
         ].map((item) => (
-          <div key={item.label} className="rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-center">
+          <div key={item.label} className="scroll-x-card rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-center">
             <p className="text-xs font-bold uppercase text-amber-800">{item.label}</p>
             <p className="mt-2 font-mono text-lg font-semibold text-deep">{item.ex}</p>
             <p className="mt-1 text-xs text-muted">{item.note}</p>
@@ -134,14 +134,14 @@ x = 7`}
       </FadeIn>
 
       <h3 className="mt-8 text-xl font-bold text-deep">1. Ajouter ou soustraire</h3>
-      <div className="rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm">
+      <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm">
         <p>x + 4 = 10</p>
         <p className="text-muted">→ soustraire 4 des deux côtés</p>
         <p className="font-bold text-green-800">x = 6</p>
       </div>
 
       <h3 className="mt-8 text-xl font-bold text-deep">2. Multiplier ou diviser (≠ 0)</h3>
-      <div className="rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm">
+      <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm">
         <p>3x = 12</p>
         <p className="text-muted">→ diviser par 3 des deux côtés</p>
         <p className="font-bold text-green-800">x = 4</p>
@@ -151,7 +151,7 @@ x = 7`}
       <Callout variant="definition" title="Distributivité">
         <p className="font-mono">a(b + c) = ab + ac</p>
       </Callout>
-      <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-4 font-mono text-sm">
+      <div className="scroll-x-card rounded-xl border border-amber-200 bg-amber-50/50 p-4 font-mono text-sm">
         <p>2(x + 3) = 14</p>
         <p>→ 2x + 6 = 14</p>
         <p>→ 2x = 8</p>
@@ -327,7 +327,7 @@ x = 7`}
         </Callout>
       </Accordion>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/40 p-5">
+      <div className="mt-8 scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/40 p-5">
         <p className="font-semibold text-deep">Petit exercice — coefficients seulement</p>
         <p className="mt-2 font-mono text-deep">x/5 + x/10 = 7</p>
         <p className="mt-2 text-sm text-muted">
@@ -491,13 +491,13 @@ x = 7`}
 
       <h3 className="mt-10 text-xl font-bold text-deep">Cas particuliers</h3>
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4">
           <p className="font-semibold text-violet-700">b = 0</p>
           <p className="mt-2 font-mono text-sm">x² − 9 = 0</p>
           <p className="mt-1 font-mono text-sm text-muted">x² = 9</p>
           <p className="mt-1 font-bold text-green-800">x = ±3</p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4">
           <p className="font-semibold text-violet-700">c = 0</p>
           <p className="mt-2 font-mono text-sm">x² + 5x = 0</p>
           <p className="mt-1 font-mono text-sm text-muted">x(x + 5) = 0</p>
@@ -788,7 +788,7 @@ x = 7`}
         </Callout>
       </div>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/40 p-5">
+      <div className="mt-8 scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/40 p-5">
         <p className="font-semibold text-deep">Exercice rapide</p>
         <MathBlock tex="\begin{cases} 3x + 2y = 10 \\ 5x - 2y = 6 \end{cases}" className="!my-2" />
         <p className="text-sm text-muted">1️⃣ Addition ou soustraction ? 2️⃣ Quelle inconnue est éliminée ?</p>

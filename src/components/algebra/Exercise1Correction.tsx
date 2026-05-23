@@ -33,7 +33,7 @@ const steps = [
 export function Exercise1Correction() {
   return (
     <FadeIn>
-      <div className="my-10 overflow-hidden rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-white shadow-lg">
+      <div className="my-10 scroll-x-card rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-white shadow-lg">
         <div className="border-b border-green-100 bg-green-600/10 px-5 py-4">
           <p className="text-xs font-bold uppercase tracking-wider text-green-800">Correction détaillée</p>
           <h3 className="mt-1 text-lg font-bold text-deep">Exercice 1 — a⃗ = (2, 1), b⃗ = (3, 4)</h3>
@@ -46,7 +46,7 @@ export function Exercise1Correction() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
             >
               <div className="mb-2 flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-600" />

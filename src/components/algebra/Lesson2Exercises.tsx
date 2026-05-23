@@ -13,7 +13,7 @@ export function Lesson2Exercises() {
         Exercices — Leçon 2
       </h3>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">Exercice 1 — u⃗₁ = (1, 2), u⃗₂ = (3, 1)</p>
           <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-ink/90">
@@ -43,7 +43,7 @@ export function Lesson2Exercises() {
         </AnimatePresence>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">Exercice 2 — Python / NumPy</p>
         </div>

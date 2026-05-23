@@ -33,7 +33,7 @@ export function MathBlock({ tex, className }: { tex: string; className?: string 
   return (
     <div
       className={cn(
-        'math-block my-4 max-w-full min-w-0 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center',
+        'math-block scroll-x-card my-4 max-w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center',
         className,
       )}
     >

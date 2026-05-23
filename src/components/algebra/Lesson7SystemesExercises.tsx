@@ -13,7 +13,7 @@ export function Lesson7SystemesExercises() {
         Exercices — Systèmes linéaires
       </h3>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">Exercice 1 — Résolution</p>
           <p className="mt-1 text-sm text-ink/90">
@@ -41,7 +41,7 @@ export function Lesson7SystemesExercises() {
         </AnimatePresence>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">Exercice 2 — Type de solution</p>
           <p className="mt-1 text-sm text-ink/90">2x + 4y = 8 &nbsp;·&nbsp; x + 2y = 5</p>
@@ -68,7 +68,7 @@ export function Lesson7SystemesExercises() {
         </AnimatePresence>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
+      <div className="scroll-x-card rounded-2xl border border-amber-200 bg-amber-50/50 shadow-sm">
         <div className="border-b border-amber-100 bg-white/80 px-4 py-3">
           <p className="font-semibold text-deep">Exercice 3 — Interprétation géométrique</p>
           <p className="mt-1 text-sm text-ink/90">

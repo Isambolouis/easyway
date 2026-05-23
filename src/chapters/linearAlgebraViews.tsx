@@ -57,7 +57,7 @@ export const linearAlgebraViews: Record<string, () => ReactNode> = {
           { title: 'Soustraction', tex: '\\begin{pmatrix}3\\\\4\\end{pmatrix}-\\begin{pmatrix}1\\\\2\\end{pmatrix}=\\begin{pmatrix}2\\\\2\\end{pmatrix}' },
           { title: 'Scalaire', tex: '2\\begin{pmatrix}3\\\\4\\end{pmatrix}=\\begin{pmatrix}6\\\\8\\end{pmatrix}' },
         ].map((op) => (
-          <div key={op.title} className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+          <div key={op.title} className="scroll-x-card rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
             <p className="mb-2 text-sm font-bold text-violet-700">{op.title}</p>
             <MathBlock tex={op.tex} className="!my-0 !border-0 !bg-transparent !p-0" />
           </div>
@@ -177,7 +177,7 @@ angle = np.degrees(np.arccos(dot / (np.linalg.norm(a) * np.linalg.norm(b))))`}
           { t: 'RVB', d: 'Couleur = combinaison linéaire R, V, B.' },
           { t: 'Filtres', d: 'Pixel = combinaison des voisins.' },
         ].map((item) => (
-          <div key={item.t} className="rounded-xl border border-violet-100 bg-violet-50/60 p-3 text-sm">
+          <div key={item.t} className="scroll-x-card rounded-xl border border-violet-100 bg-violet-50/60 p-3 text-sm">
             <p className="font-bold text-violet-800">{item.t}</p>
             <p className="mt-1 text-muted">{item.d}</p>
           </div>
@@ -313,7 +313,7 @@ angle = np.degrees(np.arccos(dot / (np.linalg.norm(a) * np.linalg.norm(b))))`}
             d: 'Vecteurs de grande dimension projetés dans des bases orthogonales pour simplifier l’analyse.',
           },
         ].map((item) => (
-          <div key={item.t} className="rounded-xl border border-violet-100 bg-violet-50/60 p-3 text-sm">
+          <div key={item.t} className="scroll-x-card rounded-xl border border-violet-100 bg-violet-50/60 p-3 text-sm">
             <p className="font-bold text-violet-800">{item.t}</p>
             <p className="mt-1 text-muted">{item.d}</p>
           </div>
@@ -766,18 +766,18 @@ print(x)  # [2. 1.]`}
       <h3 className="mt-10 text-xl font-bold text-deep">Exemple complet pas à pas</h3>
 
       <div className="space-y-4">
-        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-violet-200 bg-violet-50/40 p-4">
           <p className="text-sm font-bold text-violet-800">Étape 1 — Éliminer x dans L₂</p>
           <p className="mt-1 font-mono text-sm">L₂ ← L₂ − 2L₁</p>
           <p className="mt-1 text-sm text-muted">(2, −1, 1) − 2(1, 1, 5) = (0, −3, −9)</p>
           <MathBlock tex="\left(\begin{array}{cc|c}1&1&5\\0&-3&-9\end{array}\right)" className="!my-1" />
         </div>
-        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-violet-200 bg-violet-50/40 p-4">
           <p className="text-sm font-bold text-violet-800">Étape 2 — Simplifier L₂</p>
           <p className="mt-1 font-mono text-sm">L₂ ← −(1/3)L₂</p>
           <MathBlock tex="\left(\begin{array}{cc|c}1&1&5\\0&1&3\end{array}\right)" className="!my-1" />
         </div>
-        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-violet-200 bg-violet-50/40 p-4">
           <p className="text-sm font-bold text-violet-800">Étape 3 — Éliminer y dans L₁</p>
           <p className="mt-1 font-mono text-sm">L₁ ← L₁ − L₂</p>
           <MathBlock tex="\left(\begin{array}{cc|c}1&0&2\\0&1&3\end{array}\right)" className="!my-1" />
@@ -872,17 +872,17 @@ print(x)  # [2. 3.]`}
 
       <h3 className="mt-10 text-xl font-bold text-deep">4. Exemples</h3>
       <div className="space-y-4">
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4">
           <p className="font-semibold text-violet-700">Ex. 1 — produit positif</p>
           <MathBlock tex="u=(2,1),\;v=(3,4)\Rightarrow u\cdot v=10>0" className="!my-2" />
           <p className="text-sm text-muted">Même direction globale.</p>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 bg-white p-4">
           <p className="font-semibold text-violet-700">Ex. 2 — produit négatif</p>
           <MathBlock tex="u=(1,2),\;v=(-3,-1)\Rightarrow u\cdot v=-5" className="!my-2" />
           <p className="text-sm text-muted">Directions opposées.</p>
         </div>
-        <div className="rounded-xl border border-green-200 bg-green-50/50 p-4">
+        <div className="scroll-x-card rounded-xl border border-green-200 bg-green-50/50 p-4">
           <p className="font-semibold text-green-800">Ex. 3 — orthogonalité</p>
           <MathBlock tex="u=(2,3),\;v=(3,-2)\Rightarrow u\cdot v=0" className="!my-2" />
           <p className="text-sm text-muted">Vecteurs perpendiculaires.</p>

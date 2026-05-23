@@ -108,17 +108,17 @@ export const nlpViews: Record<string, () => ReactNode> = {
 
       <h3 className="mt-10 text-xl font-bold text-deep">1.6 Évolution historique</h3>
       <div className="space-y-4">
-        <div className="rounded-xl border border-slate-200 p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 p-4">
           <p className="font-bold text-deep">A. Symbolique (1950–1980)</p>
           <p className="mt-1 text-sm text-muted">Règles manuelles — limite : complexité impossible à couvrir.</p>
           <pre className="mt-2 rounded-lg bg-slate-100 p-3 text-xs">SI mot = &quot;chien&quot; ALORS catégorie = animal</pre>
         </div>
-        <div className="rounded-xl border border-slate-200 p-4">
+        <div className="scroll-x-card rounded-xl border border-slate-200 p-4">
           <p className="font-bold text-deep">B. Statistique (1980–2015)</p>
           <p className="mt-1 text-sm text-muted">Naive Bayes, HMM, SVM, n-grams — apprentissage depuis les données.</p>
           <MathBlock tex="P(w_n\mid w_{n-1})" className="!my-2" />
         </div>
-        <div className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
+        <div className="scroll-x-card rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
           <p className="font-bold text-deep">C. Deep Learning (2015–aujourd’hui)</p>
           <p className="mt-1 text-sm text-muted">RNN, LSTM, Transformers, BERT, GPT — GPU + Big Data.</p>
         </div>

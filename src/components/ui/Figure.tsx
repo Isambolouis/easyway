@@ -13,7 +13,7 @@ export function Figure({
   return (
     <figure
       className={cn(
-        'my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-md',
+        'scroll-x-card my-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-md',
         className,
       )}
     >

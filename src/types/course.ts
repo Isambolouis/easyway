@@ -16,7 +16,7 @@ export type CourseMeta = {
   title: string
   subtitle: string
   description: string
-  accent: 'teal' | 'violet' | 'amber' | 'rose' | 'indigo'
+  accent: 'teal' | 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald'
   chapterLabel: string
   basePath: string
 }

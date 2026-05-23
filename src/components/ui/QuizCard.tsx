@@ -18,7 +18,7 @@ export function QuizCard({
   const done = picked !== null
 
   return (
-    <div className="my-8 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-white p-5 shadow-md">
+    <div className="scroll-x-card my-8 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-white p-5 shadow-md">
       <p className="mb-3 text-xs font-bold uppercase tracking-wider text-violet-700">Quiz rapide</p>
       <p className="mb-4 font-semibold text-deep">{question}</p>
       <ul className="space-y-2">

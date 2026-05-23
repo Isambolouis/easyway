@@ -8,6 +8,7 @@ import { algebraLevels, chaptersByLevel } from '@/content/linearAlgebraChapters'
 import { equationLevels, equationsChaptersByLevel } from '@/content/equationsChapters'
 import { functionLevels, functionsChaptersByLevel } from '@/content/functionsChapters'
 import { nlpLevels, nlpChaptersByLevel } from '@/content/nlpChapters'
+import { probabilitesLevels, probabilitesChaptersByLevel } from '@/content/probabilitesChapters'
 
 type SidebarTab = 'cours' | 'quiz'
 
@@ -112,11 +113,12 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const isEquations = courseId === 'equations-mathematiques'
   const isFunctions = courseId === 'fonctions-mathematiques'
   const isNlp = courseId === 'nlp'
+  const isProbabilites = courseId === 'probabilites'
 
   const levelNav = (
     levels: { id: number; title: string }[],
     byLevel: (n: number) => ReturnType<typeof getChaptersForCourse>,
-    accent: 'violet' | 'amber' | 'rose' | 'indigo',
+    accent: 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald',
   ) =>
     levels.map((level) => (
       <div key={level.id} className="mb-3">
@@ -129,7 +131,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                 ? 'text-amber-700'
                 : accent === 'rose'
                   ? 'text-rose-700'
-                  : 'text-indigo-700',
+                  : accent === 'emerald'
+                    ? 'text-emerald-700'
+                    : 'text-indigo-700',
           )}
         >
           P.{level.id} — {level.title}
@@ -156,14 +160,18 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                         ? 'bg-amber-600 text-white shadow-md'
                         : accent === 'rose'
                           ? 'bg-rose-600 text-white shadow-md'
-                          : 'bg-indigo-600 text-white shadow-md'
+                          : accent === 'emerald'
+                            ? 'bg-emerald-600 text-white shadow-md'
+                            : 'bg-indigo-600 text-white shadow-md'
                     : accent === 'violet'
                       ? 'text-ink/80 hover:bg-violet-50 hover:text-violet-900'
                       : accent === 'amber'
                         ? 'text-ink/80 hover:bg-amber-50 hover:text-amber-900'
                         : accent === 'rose'
                           ? 'text-ink/80 hover:bg-rose-50 hover:text-rose-900'
-                          : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
+                          : accent === 'emerald'
+                            ? 'text-ink/80 hover:bg-emerald-50 hover:text-emerald-900'
+                            : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
                 )
               }
             >
@@ -213,7 +221,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             ? levelNav(functionLevels, functionsChaptersByLevel, 'rose')
             : isNlp
               ? levelNav(nlpLevels, nlpChaptersByLevel, 'indigo')
-              : chapters.map((ch) => {
+              : isProbabilites
+                ? levelNav(probabilitesLevels, probabilitesChaptersByLevel, 'emerald')
+                : chapters.map((ch) => {
                 const Icon = ch.icon
                 return (
                   <NavLink

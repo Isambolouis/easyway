@@ -22,7 +22,7 @@ export function MatrixOperationBlock({
   warning,
 }: MatrixOperationBlockProps) {
   return (
-    <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <section className="scroll-x-card mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
       <p className="text-xs font-bold uppercase tracking-wider text-violet-600">{step}</p>
       <h4 className="mt-1 text-lg font-bold text-deep">{title}</h4>
       <p className="mt-2 text-sm text-muted">{definition}</p>

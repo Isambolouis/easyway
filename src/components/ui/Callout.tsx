@@ -29,7 +29,7 @@ export function Callout({
   return (
     <aside
       className={cn(
-        'my-6 rounded-2xl border-l-4 p-4 shadow-sm',
+        'scroll-x-card my-6 rounded-2xl border-l-4 p-4 shadow-sm',
         styles[variant],
         className,
       )}
@@ -37,7 +37,7 @@ export function Callout({
       <p className="mb-2 text-xs font-bold uppercase tracking-wider text-deep">
         {title ?? titles[variant]}
       </p>
-      <div className="text-[0.98rem] leading-relaxed text-ink/90">{children}</div>
+      <div className="min-w-0 text-[0.98rem] leading-relaxed text-ink/90">{children}</div>
     </aside>
   )
 }

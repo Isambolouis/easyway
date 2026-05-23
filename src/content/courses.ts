@@ -1,4 +1,4 @@
-import { Brain, Sigma, Equal, FunctionSquare, MessageSquare } from 'lucide-react'
+import { Brain, Sigma, Equal, FunctionSquare, MessageSquare, Dice5 } from 'lucide-react'
 import type { CourseMeta } from '@/types/course'
 
 export const courses: CourseMeta[] = [
@@ -57,6 +57,17 @@ export const courses: CourseMeta[] = [
     chapterLabel: 'Chapitre',
     basePath: '/cours/nlp',
   },
+  {
+    id: 'probabilites',
+    slug: 'probabilites',
+    title: 'Probabilités',
+    subtitle: 'Fondements, statistiques & IA',
+    description:
+      'Du dénombrement à Bayes, lois discrètes et normale, Markov et Monte-Carlo — jusqu’au machine learning et deep learning probabiliste.',
+    accent: 'emerald',
+    chapterLabel: 'Chapitre',
+    basePath: '/cours/probabilites',
+  },
 ]
 
 export function getCourseBySlug(slug: string) {
@@ -69,4 +80,5 @@ export const courseIcons: Record<string, typeof Brain> = {
   'equations-mathematiques': Equal,
   'fonctions-mathematiques': FunctionSquare,
   nlp: MessageSquare,
+  probabilites: Dice5,
 }
