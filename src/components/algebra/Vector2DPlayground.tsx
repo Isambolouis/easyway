@@ -133,14 +133,14 @@ export function Vector2DPlayground() {
 
   return (
     <FadeIn>
-      <div className="my-8 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 shadow-lg">
+      <div className="interactive-panel my-8 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 shadow-lg">
         <div className="border-b border-violet-100 bg-violet-600/10 px-4 py-3">
           <p className="text-xs font-bold uppercase tracking-wider text-violet-700">Atelier interactif — plan 2D</p>
           <p className="text-sm text-muted">Déplace les composantes et observe les flèches en temps réel.</p>
         </div>
-        <div className="grid gap-4 p-4 lg:grid-cols-[1fr_280px]">
-          <div className="relative rounded-xl border border-slate-200 bg-slate-50/80 p-2">
-            <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Représentation graphique de vecteurs">
+        <div className="interactive-panel__body grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+          <div className="relative min-w-0 rounded-xl border border-slate-200 bg-slate-50/80 p-2">
+            <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full min-w-[280px]" role="img" aria-label="Représentation graphique de vecteurs">
               <defs>
                 <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
                   <path d="M0,0 L8,3 L0,6 z" fill="context-stroke" />
@@ -159,7 +159,7 @@ export function Vector2DPlayground() {
               <circle cx={pb.x} cy={pb.y} r={4} fill="#0d9488" />
             </svg>
           </div>
-          <div className="space-y-3">
+          <div className="min-w-0 space-y-3">
             {slider('a⃗', a, setA, '#7c3aed')}
             {slider('b⃗', b, setB, '#0d9488')}
             <label className="block rounded-xl border border-slate-200 bg-white/80 p-3 text-sm">
@@ -209,7 +209,7 @@ export function Vector2DPlayground() {
             </motion.div>
           ))}
         </div>
-        <div className="px-4 pb-4">
+        <div className="max-w-full space-y-2 overflow-x-auto px-4 pb-4">
           <MathBlock tex={`\\|\\vec{a}\\| = \\sqrt{${a[0]}^2 + ${a[1]}^2} = ${na.toFixed(3)}`} />
           <MathBlock tex={`\\vec{a}\\cdot\\vec{b} = ${a[0]}\\times${b[0]} + ${a[1]}\\times${b[1]} = ${d.toFixed(3)}`} />
         </div>

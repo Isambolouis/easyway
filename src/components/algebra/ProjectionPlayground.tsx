@@ -48,9 +48,9 @@ export function ProjectionPlayground() {
   const op = toSvg(p, ox, oy, s)
   return (
     <FadeIn>
-      <div className="my-6 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50/80 to-white p-4 shadow-md">
+      <div className="interactive-panel my-6 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50/80 to-white p-4 shadow-md">
         <p className="font-semibold text-deep">Démo — proj<sub>v</sub>(u) et distance perpendiculaire</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="interactive-panel__body mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <label className="text-sm">
             u = ({u[0]}, {u[1]})
             <input
@@ -90,7 +90,8 @@ export function ProjectionPlayground() {
             />
           </label>
         </div>
-        <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto mt-4 w-full max-w-md">
+        <div className="mt-4 max-w-full overflow-x-auto">
+        <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto h-auto w-full min-w-[280px] max-w-md">
           <line x1={0} y1={oy} x2={W} y2={oy} stroke="#e2e8f0" />
           <line x1={ox} y1={0} x2={ox} y2={H} stroke="#e2e8f0" />
           <line x1={ox} y1={oy} x2={ou.x} y2={ou.y} stroke="#7c3aed" strokeWidth={2} />
@@ -100,7 +101,8 @@ export function ProjectionPlayground() {
           <circle cx={ou.x} cy={ou.y} r={4} fill="#7c3aed" />
           <circle cx={op.x} cy={op.y} r={4} fill="#0d9488" />
         </svg>
-        <div className="mt-3 grid gap-2 rounded-xl bg-white/90 p-3 text-sm sm:grid-cols-2">
+        </div>
+        <div className="mt-3 grid grid-cols-1 gap-2 rounded-xl bg-white/90 p-3 text-sm sm:grid-cols-2">
           <p>
             <strong className="text-teal-700">proj_v(u)</strong> = ({p[0].toFixed(2)}, {p[1].toFixed(2)})
           </p>

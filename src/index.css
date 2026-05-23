@@ -59,6 +59,49 @@ body {
   }
 }
 
+/* Panneaux interactifs — défilement horizontal sur mobile */
+.prose-course {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.interactive-panel {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.interactive-panel__body {
+  min-width: 0;
+}
+
+.interactive-panel input[type='range'] {
+  display: block;
+  width: 100%;
+  min-height: 2.25rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.interactive-panel .math-block {
+  max-width: none;
+  min-width: min(100%, 20rem);
+}
+
+.interactive-panel .math-block .katex-display {
+  display: inline-block;
+  min-width: min-content;
+  text-align: center;
+}
+
+.math-block .katex-display {
+  display: inline-block;
+  min-width: min-content;
+  max-width: none;
+}
+
 @media print {
   .no-print {
     display: none !important;

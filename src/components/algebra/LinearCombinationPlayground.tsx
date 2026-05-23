@@ -51,13 +51,14 @@ export function LinearCombinationPlayground({
 
   return (
     <FadeIn>
-      <div className="my-8 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-br from-indigo-50 to-white shadow-lg">
+      <div className="interactive-panel my-8 rounded-2xl border border-violet-200 bg-gradient-to-br from-indigo-50 to-white shadow-lg">
         <div className="border-b border-violet-100 px-4 py-3">
           <p className="text-xs font-bold uppercase tracking-wider text-violet-700">{title}</p>
           <p className="text-sm text-muted">{subtitle ?? defaultSubtitle}</p>
         </div>
-        <div className="grid gap-4 p-4 lg:grid-cols-2">
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full rounded-xl border border-slate-200 bg-slate-50">
+        <div className="interactive-panel__body grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+          <div className="min-h-[200px] min-w-0 shrink-0">
+          <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full min-w-[280px] rounded-xl border border-slate-200 bg-slate-50">
             <line x1={20} y1={oy} x2={W - 20} y2={oy} stroke="#cbd5e1" />
             <line x1={ox} y1={20} x2={ox} y2={H - 20} stroke="#cbd5e1" />
             <line
@@ -102,7 +103,8 @@ export function LinearCombinationPlayground({
               </marker>
             </defs>
           </svg>
-          <div className="space-y-4">
+          </div>
+          <div className="min-w-0 space-y-4">
             <label className="block text-sm">
               <span className="font-semibold text-violet-700">α₁ = {a1.toFixed(2)}</span>
               <input
@@ -127,9 +129,12 @@ export function LinearCombinationPlayground({
                 className="mt-1 w-full accent-teal"
               />
             </label>
-            <MathBlock
-              tex={`\\vec{v} = ${a1.toFixed(2)}\\begin{pmatrix}${u1[0]}\\\\${u1[1]}\\end{pmatrix} + ${a2.toFixed(2)}\\begin{pmatrix}${u2[0]}\\\\${u2[1]}\\end{pmatrix} = (${result[0].toFixed(2)},\\,${result[1].toFixed(2)})`}
-            />
+            <div className="max-w-full overflow-x-auto">
+              <MathBlock
+                tex={`\\vec{v} = ${a1.toFixed(2)}\\begin{pmatrix}${u1[0]}\\\\${u1[1]}\\end{pmatrix} + ${a2.toFixed(2)}\\begin{pmatrix}${u2[0]}\\\\${u2[1]}\\end{pmatrix} = (${result[0].toFixed(2)},\\,${result[1].toFixed(2)})`}
+                className="!inline-block min-w-min"
+              />
+            </div>
             {hint && (
               <motion.p layout className="rounded-lg bg-violet-50 p-3 text-sm text-muted">
                 {hint}

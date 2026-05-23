@@ -49,9 +49,9 @@ export function BayesTheoremWidget() {
   const purplePct = pB > 0 ? (pBgivenA_times_pA / pB) * 100 : 0
 
   return (
-    <div className="my-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80">
-      <div className="grid gap-6 p-5 lg:grid-cols-2">
-        <div className="space-y-4">
+    <div className="interactive-panel my-6 rounded-2xl border border-slate-200 bg-slate-50/80">
+      <div className="interactive-panel__body grid grid-cols-1 gap-6 p-4 sm:p-5 lg:grid-cols-2">
+        <div className="min-w-0 space-y-4">
           <MathBlock tex="P(A\mid B)=\frac{P(B\mid A)\,P(A)}{P(B)}" className="!my-0" />
           <div className="space-y-3 rounded-xl border border-slate-200 bg-white p-4">
             <ProbSlider label="P(A)" value={pA} onChange={setPA} />
@@ -69,7 +69,7 @@ export function BayesTheoremWidget() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex min-w-0 flex-col justify-center">
           <p className="mb-3 text-center text-xs font-medium uppercase tracking-wide text-muted">
             Posterior = preuve utile / preuve totale
           </p>

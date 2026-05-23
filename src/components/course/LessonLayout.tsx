@@ -19,7 +19,7 @@ export function LessonLayout({ children }: { children: ReactNode }) {
   const base = course.basePath
 
   return (
-    <article className="print-break-before max-w-3xl">
+    <article className="print-break-before w-full min-w-0 max-w-3xl">
       <FadeIn>
         <p className="text-sm font-semibold text-teal">
           {course.chapterLabel} {meta.number}
@@ -30,7 +30,9 @@ export function LessonLayout({ children }: { children: ReactNode }) {
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-deep">{meta.title}</h1>
         <p className="mt-2 text-lg text-muted">{meta.description}</p>
       </FadeIn>
-      <div className="prose-course mt-8 space-y-4 text-[1.05rem] leading-relaxed text-ink/90">{children}</div>
+      <div className="prose-course mt-8 min-w-0 max-w-full space-y-4 text-[1.05rem] leading-relaxed text-ink/90">
+        {children}
+      </div>
       <nav className="no-print mt-12 flex flex-wrap justify-between gap-3 border-t border-slate-200 pt-6">
         {prev ? (
           <Link

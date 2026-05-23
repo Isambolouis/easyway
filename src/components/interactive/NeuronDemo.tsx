@@ -40,10 +40,10 @@ export function NeuronDemo() {
 
   return (
     <FadeIn>
-      <div className="my-8 rounded-2xl border border-teal/30 bg-gradient-to-br from-teal-50 to-white p-5 shadow-lg">
+      <div className="interactive-panel my-8 rounded-2xl border border-teal/30 bg-gradient-to-br from-teal-50 to-white p-5 shadow-lg">
         <p className="mb-4 text-xs font-bold uppercase tracking-wider text-teal">Démo interactive</p>
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="space-y-3">
+        <div className="interactive-panel__body grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="min-w-0 space-y-3">
             {slider('x₁', x1, setX1)}
             {slider('x₂', x2, setX2)}
             {slider('w₁', w1, setW1)}
@@ -62,7 +62,7 @@ export function NeuronDemo() {
               </select>
             </label>
           </div>
-          <div>
+          <div className="min-w-0 max-w-full overflow-x-auto">
             <MathBlock tex={`z = ${w1.toFixed(2)} \\cdot ${x1.toFixed(2)} + ${w2.toFixed(2)} \\cdot ${x2.toFixed(2)} + ${b.toFixed(2)} = ${z.toFixed(3)}`} />
             <MathBlock tex={`a = f(z) = ${a.toFixed(4)}`} />
             <div className="mt-4 h-3 overflow-hidden rounded-full bg-slate-200">

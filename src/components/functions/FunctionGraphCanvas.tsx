@@ -241,14 +241,14 @@ export function FunctionGraphCanvas({
   return (
     <div
       className={cn(
-        'my-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md',
+        'interactive-panel my-6 rounded-2xl border border-slate-200 bg-white shadow-md',
         className,
       )}
     >
-      <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-        <div className="flex min-h-[120px] items-center justify-center border-b border-slate-100 bg-slate-50/80 p-6 md:border-b-0 md:border-r">
-          <div className="text-center text-lg [&_.katex]:text-xl">
-            <MathBlock tex={preset.tex} className="!my-0 !border-0 !bg-transparent" />
+      <div className="interactive-panel__body grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+        <div className="flex min-h-[120px] min-w-0 items-center justify-center overflow-x-auto border-b border-slate-100 bg-slate-50/80 p-4 md:border-b-0 md:border-r md:p-6">
+          <div className="min-w-min text-center text-lg [&_.katex]:text-xl">
+            <MathBlock tex={preset.tex} className="!my-0 !inline-block !min-w-min !border-0 !bg-transparent" />
           </div>
         </div>
 
