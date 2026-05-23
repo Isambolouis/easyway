@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
-    // GitHub Pages : définir VITE_BASE_URL=/nom-du-repo/ dans .env.production
+    // Racine (Vercel) : VITE_BASE_URL=/ — GitHub Pages : voir .env.github-pages.example
     base: env.VITE_BASE_URL || '/',
     plugins: [react(), tailwindcss()],
     resolve: {
