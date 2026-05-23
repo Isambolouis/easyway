@@ -5,13 +5,13 @@ import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const accents = {
-  teal: 'border-teal/30 hover:border-teal bg-teal/5 hover:shadow-teal/10',
-  violet: 'border-violet-300 hover:border-violet-500 bg-violet-50 hover:shadow-violet/10',
-  amber: 'border-amber-300 hover:border-amber-500 bg-amber-50 hover:shadow-amber-500/10',
-  rose: 'border-rose-300 hover:border-rose-500 bg-rose-50 hover:shadow-rose-500/10',
-  indigo: 'border-indigo-300 hover:border-indigo-500 bg-indigo-50 hover:shadow-indigo-500/10',
-  emerald: 'border-emerald-300 hover:border-emerald-500 bg-emerald-50 hover:shadow-emerald-500/10',
-  sky: 'border-sky-300 hover:border-sky-500 bg-sky-50 hover:shadow-sky-500/10',
+  teal: 'border-teal/30 hover:border-teal bg-teal/5 hover:shadow-teal/10 dark:hover:border-teal/60',
+  violet: 'border-violet-300 hover:border-violet-500 bg-violet-50 hover:shadow-violet/10 dark:hover:border-violet-400',
+  amber: 'border-amber-300 hover:border-amber-500 bg-amber-50 hover:shadow-amber-500/10 dark:hover:border-amber-400',
+  rose: 'border-rose-300 hover:border-rose-500 bg-rose-50 hover:shadow-rose-500/10 dark:hover:border-rose-400',
+  indigo: 'border-indigo-300 hover:border-indigo-500 bg-indigo-50 hover:shadow-indigo-500/10 dark:hover:border-indigo-400',
+  emerald: 'border-emerald-300 hover:border-emerald-500 bg-emerald-50 hover:shadow-emerald-500/10 dark:hover:border-emerald-400',
+  sky: 'border-sky-300 hover:border-sky-500 bg-sky-50 hover:shadow-sky-500/10 dark:hover:border-sky-400',
 }
 
 const iconBg = {
@@ -25,13 +25,13 @@ const iconBg = {
 }
 
 const linkAccent = {
-  teal: 'text-teal',
-  violet: 'text-violet-700',
-  amber: 'text-amber-700',
-  rose: 'text-rose-700',
-  indigo: 'text-indigo-700',
-  emerald: 'text-emerald-700',
-  sky: 'text-sky-700',
+  teal: 'text-teal dark:text-teal-300',
+  violet: 'text-violet-700 dark:text-violet-300',
+  amber: 'text-amber-700 dark:text-amber-300',
+  rose: 'text-rose-700 dark:text-rose-300',
+  indigo: 'text-indigo-700 dark:text-indigo-300',
+  emerald: 'text-emerald-700 dark:text-emerald-300',
+  sky: 'text-sky-700 dark:text-sky-300',
 }
 
 export function HubPage() {

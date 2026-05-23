@@ -21,13 +21,15 @@ function SidebarTabs({
   onChange: (t: SidebarTab) => void
 }) {
   return (
-    <div className="mb-4 flex rounded-xl bg-slate-100 p-1">
+    <div className="mb-4 flex rounded-xl bg-slate-100 p-1 dark:bg-[var(--color-elevated)]">
       <button
         type="button"
         onClick={() => onChange('cours')}
         className={cn(
           'flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-bold uppercase tracking-wide transition',
-          active === 'cours' ? 'bg-white text-deep shadow-sm' : 'text-muted hover:text-deep',
+          active === 'cours'
+            ? 'bg-white text-deep shadow-sm dark:bg-[var(--color-card)]'
+            : 'text-muted hover:text-deep',
         )}
       >
         <BookOpen className="h-3.5 w-3.5" />
@@ -38,7 +40,9 @@ function SidebarTabs({
         onClick={() => onChange('quiz')}
         className={cn(
           'flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-bold uppercase tracking-wide transition',
-          active === 'quiz' ? 'bg-white text-teal shadow-sm' : 'text-muted hover:text-deep',
+          active === 'quiz'
+            ? 'bg-white text-teal shadow-sm dark:bg-[var(--color-card)]'
+            : 'text-muted hover:text-deep',
         )}
       >
         <Zap className="h-3.5 w-3.5" />

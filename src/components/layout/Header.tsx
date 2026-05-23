@@ -1,5 +1,6 @@
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { getQuizCategory } from '@/content/quizCategories'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { ArrowUp, FileDown, Menu, X } from 'lucide-react'
 import { getCourseFromPath } from '@/content/courseRegistry'
 
@@ -17,12 +18,12 @@ export function Header({
   const course = courseId ? getCourseFromPath(courseId) : null
 
   return (
-    <header className="no-print sticky top-1 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+    <header className="no-print sticky top-1 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md dark:border-[var(--color-border)] dark:bg-[color-mix(in_srgb,var(--color-card)_92%,transparent)]">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 lg:px-6">
         <div className="flex min-w-0 items-center gap-3">
           <button
             type="button"
-            className="rounded-lg border border-slate-200 p-2 text-deep lg:hidden"
+            className="rounded-lg border border-slate-200 p-2 text-deep lg:hidden dark:border-[var(--color-border)] dark:text-[var(--color-ink)]"
             onClick={onToggleSidebar}
             aria-label="Menu"
           >
@@ -38,10 +39,11 @@ export function Header({
           </Link>
         </div>
         <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hidden rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-deep hover:bg-slate-50 sm:inline-flex sm:items-center sm:gap-1"
+            className="hidden rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-deep hover:bg-slate-50 sm:inline-flex sm:items-center sm:gap-1 dark:border-[var(--color-border)] dark:text-[var(--color-ink)] dark:hover:bg-[var(--color-card-hover)]"
           >
             <ArrowUp className="h-4 w-4" /> Haut
           </button>

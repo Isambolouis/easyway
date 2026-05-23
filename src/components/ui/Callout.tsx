@@ -4,9 +4,9 @@ import type { ReactNode } from 'react'
 type Variant = 'definition' | 'important' | 'resume'
 
 const styles: Record<Variant, string> = {
-  definition: 'border-teal bg-teal-50/80',
-  important: 'border-coral bg-orange-50/80',
-  resume: 'border-deep bg-blue-50/80',
+  definition: 'border-teal bg-teal-50/80 dark:border-teal/60',
+  important: 'border-coral bg-orange-50/80 dark:border-coral/70',
+  resume: 'border-deep bg-blue-50/80 dark:border-sky-700/50',
 }
 
 const titles: Record<Variant, string> = {

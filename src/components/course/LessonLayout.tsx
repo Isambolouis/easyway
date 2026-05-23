@@ -24,7 +24,9 @@ export function LessonLayout({ children }: { children: ReactNode }) {
         <p className="text-sm font-semibold text-teal">
           {course.chapterLabel} {meta.number}
           {meta.comingSoon && (
-            <span className="ml-2 rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-600">Bientôt</span>
+            <span className="ml-2 rounded-full bg-slate-200 px-2 py-0.5 text-xs text-slate-600 dark:bg-[var(--color-elevated)] dark:text-muted">
+              Bientôt
+            </span>
           )}
         </p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight text-deep">{meta.title}</h1>
@@ -33,11 +35,11 @@ export function LessonLayout({ children }: { children: ReactNode }) {
       <div className="prose-course mt-8 min-w-0 max-w-full space-y-4 text-[1.05rem] leading-relaxed text-ink/90">
         {children}
       </div>
-      <nav className="no-print mt-12 flex flex-wrap justify-between gap-3 border-t border-slate-200 pt-6">
+      <nav className="no-print mt-12 flex flex-wrap justify-between gap-3 border-t border-slate-200 pt-6 dark:border-[var(--color-border)]">
         {prev ? (
           <Link
             to={`${base}/${prev.slug}`}
-            className="inline-flex items-center gap-1 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50"
+            className="inline-flex items-center gap-1 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:border-[var(--color-border)] dark:hover:bg-[var(--color-card-hover)]"
           >
             <ChevronLeft className="h-4 w-4" /> {prev.title}
           </Link>

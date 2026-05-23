@@ -14,7 +14,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="mx-auto flex max-w-7xl">
         <aside
           className={cn(
-            'no-print fixed inset-y-0 left-0 z-40 w-72 translate-x-0 border-r border-slate-200 bg-white pt-16 transition-transform lg:static lg:block lg:translate-x-0 lg:pt-4',
+            'no-print fixed inset-y-0 left-0 z-40 w-72 translate-x-0 border-r border-slate-200 bg-white pt-16 transition-transform lg:static lg:block lg:translate-x-0 lg:pt-4 dark:border-[var(--color-border)] dark:bg-[var(--color-card)]',
             sidebarOpen ? 'translate-x-0 shadow-xl' : '-translate-x-full lg:translate-x-0',
           )}
         >

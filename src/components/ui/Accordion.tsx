@@ -15,11 +15,11 @@ export function Accordion({
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className="scroll-x-card my-4 rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="scroll-x-card my-4 rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-[var(--color-border)] dark:bg-[var(--color-card)]">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left font-semibold text-deep transition hover:bg-slate-50"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left font-semibold text-deep transition hover:bg-slate-50 dark:hover:bg-[var(--color-card-hover)]"
         aria-expanded={open}
       >
         {title}
@@ -36,7 +36,7 @@ export function Accordion({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <div className="min-w-0 overflow-x-auto border-t border-slate-100 px-4 py-3 text-muted">
+            <div className="min-w-0 overflow-x-auto border-t border-slate-100 px-4 py-3 text-muted dark:border-[var(--color-border)]">
               {children}
             </div>
           </motion.div>
