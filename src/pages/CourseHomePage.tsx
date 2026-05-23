@@ -7,6 +7,7 @@ import { EquationsCoursePlan } from '@/components/equations/EquationsCoursePlan'
 import { FunctionsCoursePlan } from '@/components/functions/FunctionsCoursePlan'
 import { NLPCoursePlan } from '@/components/nlp/NLPCoursePlan'
 import { ProbabilitesCoursePlan } from '@/components/probabilites/ProbabilitesCoursePlan'
+import { StatistiqueDescriptiveCoursePlan } from '@/components/statistique/StatistiqueDescriptiveCoursePlan'
 import { cn } from '@/lib/utils'
 
 export function CourseHomePage() {
@@ -21,6 +22,7 @@ export function CourseHomePage() {
   const isFunctions = courseId === 'fonctions-mathematiques'
   const isNlp = courseId === 'nlp'
   const isProbabilites = courseId === 'probabilites'
+  const isStatistique = courseId === 'statistique-descriptive'
   const badgeBg =
     course.accent === 'violet'
       ? 'bg-violet-600'
@@ -32,7 +34,9 @@ export function CourseHomePage() {
             ? 'bg-indigo-600'
             : course.accent === 'emerald'
               ? 'bg-emerald-600'
-              : 'bg-teal'
+              : course.accent === 'sky'
+                ? 'bg-sky-600'
+                : 'bg-teal'
   const cardBorder =
     course.accent === 'violet'
       ? 'border-violet-200 hover:border-violet-400'
@@ -44,7 +48,9 @@ export function CourseHomePage() {
             ? 'border-indigo-200 hover:border-indigo-400'
             : course.accent === 'emerald'
               ? 'border-emerald-200 hover:border-emerald-400'
-              : 'border-slate-200 hover:border-teal/40'
+              : course.accent === 'sky'
+                ? 'border-sky-200 hover:border-sky-400'
+                : 'border-slate-200 hover:border-teal/40'
   const iconColor =
     course.accent === 'violet'
       ? 'text-violet-600'
@@ -56,7 +62,9 @@ export function CourseHomePage() {
             ? 'text-indigo-700'
             : course.accent === 'emerald'
               ? 'text-emerald-700'
-              : 'text-teal'
+              : course.accent === 'sky'
+                ? 'text-sky-700'
+                : 'text-teal'
   const linkColor =
     course.accent === 'violet'
       ? 'text-violet-700'
@@ -68,7 +76,9 @@ export function CourseHomePage() {
             ? 'text-indigo-700'
             : course.accent === 'emerald'
               ? 'text-emerald-700'
-              : 'text-teal'
+              : course.accent === 'sky'
+                ? 'text-sky-700'
+                : 'text-teal'
 
   return (
     <div className="max-w-4xl">
@@ -86,10 +96,11 @@ export function CourseHomePage() {
       {isFunctions && <FunctionsCoursePlan />}
       {isNlp && <NLPCoursePlan />}
       {isProbabilites && <ProbabilitesCoursePlan />}
+      {isStatistique && <StatistiqueDescriptiveCoursePlan />}
 
       <h2 className="mt-10 text-xl font-bold text-deep">
-        {isAlgebra || isEquations || isFunctions || isNlp || isProbabilites
-          ? 'Commencer par le chapitre 1'
+        {isAlgebra || isEquations || isFunctions || isNlp || isProbabilites || isStatistique
+          ? 'Commencer par l’introduction'
           : 'Chapitres'}
       </h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -105,7 +116,7 @@ export function CourseHomePage() {
                     <Lock className="h-4 w-4 text-slate-400" />
                   </div>
                   <p className="text-xs font-bold text-muted">
-                    {course.chapterLabel} {ch.number}
+                    {ch.number === 0 ? 'Introduction' : `${course.chapterLabel} ${ch.number}`}
                   </p>
                   <h3 className="font-semibold text-slate-500">{ch.title}</h3>
                   <p className="mt-2 text-sm text-slate-400">Bientôt disponible</p>
@@ -120,7 +131,7 @@ export function CourseHomePage() {
                 >
                   <Icon className={cn('mb-3 h-5 w-5', iconColor)} />
                   <p className="text-xs font-bold text-muted">
-                    {course.chapterLabel} {ch.number}
+                    {ch.number === 0 ? 'Introduction' : `${course.chapterLabel} ${ch.number}`}
                   </p>
                   <h3 className="font-semibold text-deep group-hover:text-teal">{ch.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-muted">{ch.description}</p>

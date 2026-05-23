@@ -1,4 +1,4 @@
-import { Brain, Sigma, Equal, FunctionSquare, MessageSquare, Dice5 } from 'lucide-react'
+import { Brain, Sigma, Equal, FunctionSquare, MessageSquare, Dice5, ChartColumn } from 'lucide-react'
 import type { CourseMeta } from '@/types/course'
 
 export const courses: CourseMeta[] = [
@@ -68,6 +68,17 @@ export const courses: CourseMeta[] = [
     chapterLabel: 'Chapitre',
     basePath: '/cours/probabilites',
   },
+  {
+    id: 'statistique-descriptive',
+    slug: 'statistique-descriptive',
+    title: 'Statistique descriptive',
+    subtitle: 'Organiser, résumer et visualiser les données',
+    description:
+      'Types de données, tableaux et fréquences, graphiques modernes, tendance centrale, dispersion, quartiles, boxplot, corrélation et applications — cours universitaire progressif.',
+    accent: 'sky',
+    chapterLabel: 'Chapitre',
+    basePath: '/cours/statistique-descriptive',
+  },
 ]
 
 export function getCourseBySlug(slug: string) {
@@ -81,4 +92,5 @@ export const courseIcons: Record<string, typeof Brain> = {
   'fonctions-mathematiques': FunctionSquare,
   nlp: MessageSquare,
   probabilites: Dice5,
+  'statistique-descriptive': ChartColumn,
 }

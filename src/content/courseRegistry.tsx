@@ -4,12 +4,17 @@ import { equationsChapters, getEquationsChapter } from './equationsChapters'
 import { functionsChapters, getFunctionsChapter } from './functionsChapters'
 import { nlpChapters, getNlpChapter } from './nlpChapters'
 import { probabilitesChapters, getProbabilitesChapter } from './probabilitesChapters'
+import {
+  statistiqueDescriptiveChapters,
+  getStatistiqueChapter,
+} from './statistiqueDescriptiveChapters'
 import { chapterViews as deepLearningViews } from '@/chapters/chapterViews'
 import { linearAlgebraViews, ComingSoonLesson } from '@/chapters/linearAlgebraViews'
 import { equationsViews, EquationsComingSoon } from '@/chapters/equationsViews'
 import { functionsViews, FunctionsComingSoon } from '@/chapters/functionsViews'
 import { nlpViews } from '@/chapters/nlpViews'
 import { probabilitesViews } from '@/chapters/probabilitesViews'
+import { statistiqueDescriptiveViews } from '@/chapters/statistiqueDescriptiveViews'
 import type { ChapterMeta } from '@/types/course'
 import type { ReactNode } from 'react'
 import { getCourseBySlug } from './courses'
@@ -21,6 +26,7 @@ export function getChaptersForCourse(courseSlug: string): ChapterMeta[] {
   if (courseSlug === 'fonctions-mathematiques') return functionsChapters
   if (courseSlug === 'nlp') return nlpChapters
   if (courseSlug === 'probabilites') return probabilitesChapters
+  if (courseSlug === 'statistique-descriptive') return statistiqueDescriptiveChapters
   return []
 }
 
@@ -31,6 +37,7 @@ export function getChapter(courseSlug: string, lessonSlug: string) {
   if (courseSlug === 'fonctions-mathematiques') return getFunctionsChapter(lessonSlug)
   if (courseSlug === 'nlp') return getNlpChapter(lessonSlug)
   if (courseSlug === 'probabilites') return getProbabilitesChapter(lessonSlug)
+  if (courseSlug === 'statistique-descriptive') return getStatistiqueChapter(lessonSlug)
   return undefined
 }
 
@@ -66,6 +73,10 @@ export function getLessonView(courseSlug: string, lessonSlug: string): (() => Re
   }
   if (courseSlug === 'probabilites') {
     const v = probabilitesViews[lessonSlug]
+    return v ?? null
+  }
+  if (courseSlug === 'statistique-descriptive') {
+    const v = statistiqueDescriptiveViews[lessonSlug]
     return v ?? null
   }
   return null

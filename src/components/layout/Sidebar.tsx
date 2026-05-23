@@ -9,6 +9,7 @@ import { equationLevels, equationsChaptersByLevel } from '@/content/equationsCha
 import { functionLevels, functionsChaptersByLevel } from '@/content/functionsChapters'
 import { nlpLevels, nlpChaptersByLevel } from '@/content/nlpChapters'
 import { probabilitesLevels, probabilitesChaptersByLevel } from '@/content/probabilitesChapters'
+import { statistiqueLevels, statistiqueChaptersByLevel } from '@/content/statistiqueDescriptiveChapters'
 
 type SidebarTab = 'cours' | 'quiz'
 
@@ -114,11 +115,12 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const isFunctions = courseId === 'fonctions-mathematiques'
   const isNlp = courseId === 'nlp'
   const isProbabilites = courseId === 'probabilites'
+  const isStatistique = courseId === 'statistique-descriptive'
 
   const levelNav = (
     levels: { id: number; title: string }[],
     byLevel: (n: number) => ReturnType<typeof getChaptersForCourse>,
-    accent: 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald',
+    accent: 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald' | 'sky',
   ) =>
     levels.map((level) => (
       <div key={level.id} className="mb-3">
@@ -133,7 +135,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                   ? 'text-rose-700'
                   : accent === 'emerald'
                     ? 'text-emerald-700'
-                    : 'text-indigo-700',
+                    : accent === 'sky'
+                      ? 'text-sky-700'
+                      : 'text-indigo-700',
           )}
         >
           P.{level.id} — {level.title}
@@ -162,7 +166,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                           ? 'bg-rose-600 text-white shadow-md'
                           : accent === 'emerald'
                             ? 'bg-emerald-600 text-white shadow-md'
-                            : 'bg-indigo-600 text-white shadow-md'
+                            : accent === 'sky'
+                              ? 'bg-sky-600 text-white shadow-md'
+                              : 'bg-indigo-600 text-white shadow-md'
                     : accent === 'violet'
                       ? 'text-ink/80 hover:bg-violet-50 hover:text-violet-900'
                       : accent === 'amber'
@@ -171,7 +177,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                           ? 'text-ink/80 hover:bg-rose-50 hover:text-rose-900'
                           : accent === 'emerald'
                             ? 'text-ink/80 hover:bg-emerald-50 hover:text-emerald-900'
-                            : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
+                            : accent === 'sky'
+                              ? 'text-ink/80 hover:bg-sky-50 hover:text-sky-900'
+                              : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
                 )
               }
             >
@@ -223,7 +231,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               ? levelNav(nlpLevels, nlpChaptersByLevel, 'indigo')
               : isProbabilites
                 ? levelNav(probabilitesLevels, probabilitesChaptersByLevel, 'emerald')
-                : chapters.map((ch) => {
+                : isStatistique
+                  ? levelNav(statistiqueLevels, statistiqueChaptersByLevel, 'sky')
+                  : chapters.map((ch) => {
                 const Icon = ch.icon
                 return (
                   <NavLink
