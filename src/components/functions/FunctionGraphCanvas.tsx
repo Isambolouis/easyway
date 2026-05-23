@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { BlockMath } from 'react-katex'
+import { MathBlock } from '@/components/ui/MathBlock'
 import { RotateCcw, ZoomIn, ZoomOut, Move } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { graphPresets, type FunctionGraphPreset, type GraphPresetId } from './functionGraphPresets'
@@ -248,7 +248,7 @@ export function FunctionGraphCanvas({
       <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="flex min-h-[120px] items-center justify-center border-b border-slate-100 bg-slate-50/80 p-6 md:border-b-0 md:border-r">
           <div className="text-center text-lg [&_.katex]:text-xl">
-            <BlockMath math={preset.tex} />
+            <MathBlock tex={preset.tex} className="!my-0 !border-0 !bg-transparent" />
           </div>
         </div>
 

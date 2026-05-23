@@ -9,6 +9,7 @@ const accents = {
   violet: 'border-violet-300 hover:border-violet-500 bg-violet-50 hover:shadow-violet/10',
   amber: 'border-amber-300 hover:border-amber-500 bg-amber-50 hover:shadow-amber-500/10',
   rose: 'border-rose-300 hover:border-rose-500 bg-rose-50 hover:shadow-rose-500/10',
+  indigo: 'border-indigo-300 hover:border-indigo-500 bg-indigo-50 hover:shadow-indigo-500/10',
 }
 
 const iconBg = {
@@ -16,6 +17,7 @@ const iconBg = {
   violet: 'bg-violet-600 text-white',
   amber: 'bg-amber-600 text-white',
   rose: 'bg-rose-600 text-white',
+  indigo: 'bg-indigo-600 text-white',
 }
 
 const linkAccent = {
@@ -23,6 +25,7 @@ const linkAccent = {
   violet: 'text-violet-700',
   amber: 'text-amber-700',
   rose: 'text-rose-700',
+  indigo: 'text-indigo-700',
 }
 
 export function HubPage() {
@@ -34,11 +37,11 @@ export function HubPage() {
         </span>
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-deep">Apprendre l’IA & ses mathématiques</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted">
-          Cours interactifs avec schémas animés, démos, quiz et export PDF — choisis un parcours.
+          Cours interactifs, quiz de calcul mental, démos et export PDF — choisis un parcours.
         </p>
       </FadeIn>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {courses.map((c, i) => {
           const Icon = courseIcons[c.slug] ?? courseIcons['deep-learning']
           return (

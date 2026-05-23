@@ -5,6 +5,7 @@ import { ArrowRight, Lock } from 'lucide-react'
 import { AlgebraCoursePlan } from '@/components/algebra/AlgebraCoursePlan'
 import { EquationsCoursePlan } from '@/components/equations/EquationsCoursePlan'
 import { FunctionsCoursePlan } from '@/components/functions/FunctionsCoursePlan'
+import { NLPCoursePlan } from '@/components/nlp/NLPCoursePlan'
 import { cn } from '@/lib/utils'
 
 export function CourseHomePage() {
@@ -17,6 +18,7 @@ export function CourseHomePage() {
   const isAlgebra = courseId === 'algebre-lineaire'
   const isEquations = courseId === 'equations-mathematiques'
   const isFunctions = courseId === 'fonctions-mathematiques'
+  const isNlp = courseId === 'nlp'
   const badgeBg =
     course.accent === 'violet'
       ? 'bg-violet-600'
@@ -24,7 +26,9 @@ export function CourseHomePage() {
         ? 'bg-amber-600'
         : course.accent === 'rose'
           ? 'bg-rose-600'
-          : 'bg-teal'
+          : course.accent === 'indigo'
+            ? 'bg-indigo-600'
+            : 'bg-teal'
   const cardBorder =
     course.accent === 'violet'
       ? 'border-violet-200 hover:border-violet-400'
@@ -32,7 +36,9 @@ export function CourseHomePage() {
         ? 'border-amber-200 hover:border-amber-400'
         : course.accent === 'rose'
           ? 'border-rose-200 hover:border-rose-400'
-          : 'border-slate-200 hover:border-teal/40'
+          : course.accent === 'indigo'
+            ? 'border-indigo-200 hover:border-indigo-400'
+            : 'border-slate-200 hover:border-teal/40'
   const iconColor =
     course.accent === 'violet'
       ? 'text-violet-600'
@@ -40,7 +46,9 @@ export function CourseHomePage() {
         ? 'text-amber-700'
         : course.accent === 'rose'
           ? 'text-rose-700'
-          : 'text-teal'
+          : course.accent === 'indigo'
+            ? 'text-indigo-700'
+            : 'text-teal'
   const linkColor =
     course.accent === 'violet'
       ? 'text-violet-700'
@@ -48,7 +56,9 @@ export function CourseHomePage() {
         ? 'text-amber-700'
         : course.accent === 'rose'
           ? 'text-rose-700'
-          : 'text-teal'
+          : course.accent === 'indigo'
+            ? 'text-indigo-700'
+            : 'text-teal'
 
   return (
     <div className="max-w-4xl">
@@ -64,9 +74,10 @@ export function CourseHomePage() {
       {isAlgebra && <AlgebraCoursePlan />}
       {isEquations && <EquationsCoursePlan />}
       {isFunctions && <FunctionsCoursePlan />}
+      {isNlp && <NLPCoursePlan />}
 
       <h2 className="mt-10 text-xl font-bold text-deep">
-        {isAlgebra || isEquations || isFunctions ? 'Commencer par la leçon 1' : 'Chapitres'}
+        {isAlgebra || isEquations || isFunctions || isNlp ? 'Commencer par le chapitre 1' : 'Chapitres'}
       </h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         {chapters.map((ch, i) => {

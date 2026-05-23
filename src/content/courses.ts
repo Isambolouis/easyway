@@ -1,4 +1,4 @@
-import { Brain, Sigma, Equal, FunctionSquare } from 'lucide-react'
+import { Brain, Sigma, Equal, FunctionSquare, MessageSquare } from 'lucide-react'
 import type { CourseMeta } from '@/types/course'
 
 export const courses: CourseMeta[] = [
@@ -46,6 +46,17 @@ export const courses: CourseMeta[] = [
     chapterLabel: 'Leçon',
     basePath: '/cours/fonctions-mathematiques',
   },
+  {
+    id: 'nlp',
+    slug: 'nlp',
+    title: 'Traitement Automatique du Langage Naturel',
+    subtitle: 'NLP — Master 1 IA / Data Science',
+    description:
+      'Du texte brut aux Transformers et LLMs : prétraitement, embeddings, deep learning, tâches avancées et projet.',
+    accent: 'indigo',
+    chapterLabel: 'Chapitre',
+    basePath: '/cours/nlp',
+  },
 ]
 
 export function getCourseBySlug(slug: string) {
@@ -57,4 +68,5 @@ export const courseIcons: Record<string, typeof Brain> = {
   'algebre-lineaire': Sigma,
   'equations-mathematiques': Equal,
   'fonctions-mathematiques': FunctionSquare,
+  nlp: MessageSquare,
 }

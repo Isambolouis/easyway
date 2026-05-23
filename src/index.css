@@ -22,6 +22,43 @@ body {
   font-family: var(--font-sans);
 }
 
+/* KaTeX — rendu fiable sur mobile (Safari / WebKit) */
+.prose-course .katex,
+.math-block .katex,
+.katex-inline .katex {
+  font-size: 1.1em;
+  line-height: 1.25;
+  text-rendering: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+.prose-course .katex-display,
+.math-block .katex-display {
+  display: block;
+  margin: 0.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* Évite que Tailwind n’écrase les polices mathématiques */
+.katex .katex-html {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .prose-course .katex,
+  .math-block .katex {
+    font-size: 1.05em;
+  }
+
+  .math-block {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 @media print {
   .no-print {
     display: none !important;

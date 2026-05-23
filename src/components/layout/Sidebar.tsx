@@ -7,6 +7,7 @@ import { ChevronRight, Lock, BookOpen, Zap } from 'lucide-react'
 import { algebraLevels, chaptersByLevel } from '@/content/linearAlgebraChapters'
 import { equationLevels, equationsChaptersByLevel } from '@/content/equationsChapters'
 import { functionLevels, functionsChaptersByLevel } from '@/content/functionsChapters'
+import { nlpLevels, nlpChaptersByLevel } from '@/content/nlpChapters'
 
 type SidebarTab = 'cours' | 'quiz'
 
@@ -110,18 +111,25 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const isAlgebra = courseId === 'algebre-lineaire'
   const isEquations = courseId === 'equations-mathematiques'
   const isFunctions = courseId === 'fonctions-mathematiques'
+  const isNlp = courseId === 'nlp'
 
   const levelNav = (
     levels: { id: number; title: string }[],
     byLevel: (n: number) => ReturnType<typeof getChaptersForCourse>,
-    accent: 'violet' | 'amber' | 'rose',
+    accent: 'violet' | 'amber' | 'rose' | 'indigo',
   ) =>
     levels.map((level) => (
       <div key={level.id} className="mb-3">
         <p
           className={cn(
             'px-2 py-1 text-[10px] font-bold uppercase tracking-wider',
-            accent === 'violet' ? 'text-violet-600' : accent === 'amber' ? 'text-amber-700' : 'text-rose-700',
+            accent === 'violet'
+              ? 'text-violet-600'
+              : accent === 'amber'
+                ? 'text-amber-700'
+                : accent === 'rose'
+                  ? 'text-rose-700'
+                  : 'text-indigo-700',
           )}
         >
           P.{level.id} — {level.title}
@@ -146,12 +154,16 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                       ? 'bg-violet-600 text-white shadow-md'
                       : accent === 'amber'
                         ? 'bg-amber-600 text-white shadow-md'
-                        : 'bg-rose-600 text-white shadow-md'
+                        : accent === 'rose'
+                          ? 'bg-rose-600 text-white shadow-md'
+                          : 'bg-indigo-600 text-white shadow-md'
                     : accent === 'violet'
                       ? 'text-ink/80 hover:bg-violet-50 hover:text-violet-900'
                       : accent === 'amber'
                         ? 'text-ink/80 hover:bg-amber-50 hover:text-amber-900'
-                        : 'text-ink/80 hover:bg-rose-50 hover:text-rose-900',
+                        : accent === 'rose'
+                          ? 'text-ink/80 hover:bg-rose-50 hover:text-rose-900'
+                          : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
                 )
               }
             >
@@ -199,7 +211,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           ? levelNav(equationLevels, equationsChaptersByLevel, 'amber')
           : isFunctions
             ? levelNav(functionLevels, functionsChaptersByLevel, 'rose')
-            : chapters.map((ch) => {
+            : isNlp
+              ? levelNav(nlpLevels, nlpChaptersByLevel, 'indigo')
+              : chapters.map((ch) => {
                 const Icon = ch.icon
                 return (
                   <NavLink

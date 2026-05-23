@@ -10,9 +10,11 @@ function LegacyChapterRedirect() {
   return <Navigate to={`/cours/deep-learning/${slug ?? 'introduction'}`} replace />
 }
 
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename || undefined}>
       <AppShell>
         <Routes>
           <Route path="/" element={<HubPage />} />

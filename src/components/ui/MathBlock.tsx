@@ -1,19 +1,59 @@
-import { BlockMath, InlineMath } from 'react-katex'
+import katex from 'katex'
+import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
+type KatexOptions = {
+  displayMode: boolean
+}
+
+function renderKatex(el: HTMLElement, tex: string, { displayMode }: KatexOptions) {
+  el.innerHTML = ''
+  katex.render(tex, el, {
+    displayMode,
+    throwOnError: false,
+    strict: 'ignore',
+    trust: false,
+    output: 'html',
+  })
+}
+
 export function MathBlock({ tex, className }: { tex: string; className?: string }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    try {
+      renderKatex(el, tex, { displayMode: true })
+    } catch {
+      el.textContent = tex
+    }
+  }, [tex])
+
   return (
     <div
       className={cn(
-        'my-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center',
+        'math-block my-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center',
         className,
       )}
     >
-      <BlockMath math={tex} />
+      <div ref={containerRef} className="katex-display" />
     </div>
   )
 }
 
-export function MathInline({ tex }: { tex: string }) {
-  return <InlineMath math={tex} />
+export function MathInline({ tex, className }: { tex: string; className?: string }) {
+  const containerRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    try {
+      renderKatex(el, tex, { displayMode: false })
+    } catch {
+      el.textContent = tex
+    }
+  }, [tex])
+
+  return <span ref={containerRef} className={cn('katex-inline', className)} />
 }
