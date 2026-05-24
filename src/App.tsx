@@ -4,6 +4,9 @@ import { HubPage } from '@/pages/HubPage'
 import { CourseHomePage } from '@/pages/CourseHomePage'
 import { LessonPage } from '@/pages/LessonPage'
 import { QuizPage } from '@/pages/QuizPage'
+import { ComputerVisionHubPage } from '@/pages/ComputerVisionHubPage'
+import { SubCourseHomePage } from '@/pages/SubCourseHomePage'
+import { SubCourseLessonPage } from '@/pages/SubCourseLessonPage'
 
 function LegacyChapterRedirect() {
   const { slug } = useParams<{ slug: string }>()
@@ -19,6 +22,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HubPage />} />
           <Route path="/quiz/:categoryId" element={<QuizPage />} />
+          <Route path="/cours/computer-vision" element={<ComputerVisionHubPage />} />
+          <Route path="/cours/computer-vision/:subCourseId" element={<SubCourseHomePage />} />
+          <Route path="/cours/computer-vision/:subCourseId/:slug" element={<SubCourseLessonPage />} />
           <Route path="/cours/:courseId" element={<CourseHomePage />} />
           <Route path="/cours/:courseId/:slug" element={<LessonPage />} />
           <Route path="/chapitre/:slug" element={<LegacyChapterRedirect />} />

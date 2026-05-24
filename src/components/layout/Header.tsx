@@ -3,6 +3,7 @@ import { getQuizCategory } from '@/content/quizCategories'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
 import { ArrowUp, FileDown, Menu, X } from 'lucide-react'
 import { getCourseFromPath } from '@/content/courseRegistry'
+import { getSubCourse } from '@/content/computerVision'
 
 export function Header({
   sidebarOpen,
@@ -16,6 +17,18 @@ export function Header({
   const quizMatch = location.pathname.match(/^\/quiz\/([^/]+)/)
   const quizCat = quizMatch ? getQuizCategory(quizMatch[1]!) : null
   const course = courseId ? getCourseFromPath(courseId) : null
+  const cvSubMatch = location.pathname.match(/^\/cours\/computer-vision\/([^/]+)/)
+  const cvSub = cvSubMatch?.[1] ? getSubCourse(cvSubMatch[1]) : null
+  const headerTitle = quizCat
+    ? `Quiz — ${quizCat.title}`
+    : cvSub
+      ? `${course?.title ?? 'Computer Vision'} — ${cvSub.title}`
+      : (course?.title ?? 'Bibliothèque de cours')
+  const headerSubtitle = quizCat
+    ? 'Entraînement interactif'
+    : cvSub
+      ? cvSub.subtitle
+      : (course?.subtitle ?? 'Deep Learning, Algèbre & Équations')
 
   return (
     <header className="no-print sticky top-1 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md dark:border-[var(--color-border)] dark:bg-[color-mix(in_srgb,var(--color-card)_92%,transparent)]">
@@ -29,13 +42,12 @@ export function Header({
           >
             {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-          <Link to={quizCat ? '/quiz/calcul-mental' : course?.basePath ?? '/'} className="min-w-0">
-            <p className="truncate text-sm font-bold text-deep">
-              {quizCat ? `Quiz — ${quizCat.title}` : course?.title ?? 'Bibliothèque de cours'}
-            </p>
-            <p className="truncate text-xs text-muted">
-              {quizCat ? 'Entraînement interactif' : course?.subtitle ?? 'Deep Learning, Algèbre & Équations'}
-            </p>
+          <Link
+            to={quizCat ? '/quiz/calcul-mental' : cvSub ? location.pathname.split('/').slice(0, 4).join('/') : (course?.basePath ?? '/')}
+            className="min-w-0"
+          >
+            <p className="truncate text-sm font-bold text-deep">{headerTitle}</p>
+            <p className="truncate text-xs text-muted">{headerSubtitle}</p>
           </Link>
         </div>
         <div className="flex shrink-0 items-center gap-2">

@@ -10,6 +10,8 @@ import { functionLevels, functionsChaptersByLevel } from '@/content/functionsCha
 import { nlpLevels, nlpChaptersByLevel } from '@/content/nlpChapters'
 import { probabilitesLevels, probabilitesChaptersByLevel } from '@/content/probabilitesChapters'
 import { statistiqueLevels, statistiqueChaptersByLevel } from '@/content/statistiqueDescriptiveChapters'
+import { COMPUTER_VISION_SLUG, subCourseBasePath } from '@/content/computerVision'
+import { imageLevels, imageChaptersByLevel } from '@/content/image/imageChapters'
 
 type SidebarTab = 'cours' | 'quiz'
 
@@ -120,11 +122,14 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const isNlp = courseId === 'nlp'
   const isProbabilites = courseId === 'probabilites'
   const isStatistique = courseId === 'statistique-descriptive'
-
+  const isComputerVision = courseId === COMPUTER_VISION_SLUG
+  const cvSubMatch = location.pathname.match(/^\/cours\/computer-vision\/([^/]+)/)
+  const cvSubSlug = cvSubMatch?.[1]
   const levelNav = (
     levels: { id: number; title: string }[],
     byLevel: (n: number) => ReturnType<typeof getChaptersForCourse>,
-    accent: 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald' | 'sky',
+    accent: 'violet' | 'amber' | 'rose' | 'indigo' | 'emerald' | 'sky' | 'cyan',
+    basePath?: string,
   ) =>
     levels.map((level) => (
       <div key={level.id} className="mb-3">
@@ -141,7 +146,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                     ? 'text-emerald-700'
                     : accent === 'sky'
                       ? 'text-sky-700'
-                      : 'text-indigo-700',
+                      : accent === 'cyan'
+                        ? 'text-cyan-700'
+                        : 'text-indigo-700',
           )}
         >
           P.{level.id} — {level.title}
@@ -152,7 +159,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           return (
             <NavLink
               key={ch.slug}
-              to={locked ? '#' : `${course!.basePath}/${ch.slug}`}
+              to={locked ? '#' : `${basePath ?? course!.basePath}/${ch.slug}`}
               onClick={(e) => {
                 if (locked) e.preventDefault()
                 else onNavigate?.()
@@ -172,7 +179,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                             ? 'bg-emerald-600 text-white shadow-md'
                             : accent === 'sky'
                               ? 'bg-sky-600 text-white shadow-md'
-                              : 'bg-indigo-600 text-white shadow-md'
+                              : accent === 'cyan'
+                                ? 'bg-cyan-600 text-white shadow-md'
+                                : 'bg-indigo-600 text-white shadow-md'
                     : accent === 'violet'
                       ? 'text-ink/80 hover:bg-violet-50 hover:text-violet-900'
                       : accent === 'amber'
@@ -183,7 +192,9 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                             ? 'text-ink/80 hover:bg-emerald-50 hover:text-emerald-900'
                             : accent === 'sky'
                               ? 'text-ink/80 hover:bg-sky-50 hover:text-sky-900'
-                              : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
+                              : accent === 'cyan'
+                                ? 'text-ink/80 hover:bg-cyan-50 hover:text-cyan-900'
+                                : 'text-ink/80 hover:bg-indigo-50 hover:text-indigo-900',
                 )
               }
             >
@@ -237,7 +248,36 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                 ? levelNav(probabilitesLevels, probabilitesChaptersByLevel, 'emerald')
                 : isStatistique
                   ? levelNav(statistiqueLevels, statistiqueChaptersByLevel, 'sky')
-                  : chapters.map((ch) => {
+                  : isComputerVision && cvSubSlug === 'images'
+                    ? levelNav(
+                        imageLevels,
+                        imageChaptersByLevel,
+                        'cyan',
+                        subCourseBasePath('images'),
+                      )
+                    : isComputerVision
+                      ? (
+                          <div className="space-y-2 px-2">
+                            <p className="text-[10px] font-bold uppercase tracking-wider text-cyan-700">
+                              Sous-cours
+                            </p>
+                            <NavLink
+                              to={subCourseBasePath('images')}
+                              onClick={onNavigate}
+                              className={({ isActive }) =>
+                                cn(
+                                  'block rounded-xl px-2 py-2 text-sm font-medium transition',
+                                  isActive
+                                    ? 'bg-cyan-600 text-white'
+                                    : 'text-ink/80 hover:bg-cyan-50 hover:text-cyan-900',
+                                )
+                              }
+                            >
+                              Images numériques
+                            </NavLink>
+                          </div>
+                        )
+                      : chapters.map((ch) => {
                 const Icon = ch.icon
                 return (
                   <NavLink

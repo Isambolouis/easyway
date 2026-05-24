@@ -1,4 +1,4 @@
-import { Brain, Sigma, Equal, FunctionSquare, MessageSquare, Dice5, ChartColumn } from 'lucide-react'
+import { Brain, Sigma, Equal, FunctionSquare, MessageSquare, Dice5, ChartColumn, Eye } from 'lucide-react'
 import type { CourseMeta } from '@/types/course'
 
 export const courses: CourseMeta[] = [
@@ -79,6 +79,17 @@ export const courses: CourseMeta[] = [
     chapterLabel: 'Chapitre',
     basePath: '/cours/statistique-descriptive',
   },
+  {
+    id: 'computer-vision',
+    slug: 'computer-vision',
+    title: 'Computer Vision',
+    subtitle: 'Vision par ordinateur & traitement d’image',
+    description:
+      'Parcours modulaire : sous-cours Images (pixels, filtres, CNN, OpenCV), puis modules vidéo et 3D à venir.',
+    accent: 'cyan',
+    chapterLabel: 'Chapitre',
+    basePath: '/cours/computer-vision',
+  },
 ]
 
 export function getCourseBySlug(slug: string) {
@@ -93,4 +104,5 @@ export const courseIcons: Record<string, typeof Brain> = {
   nlp: MessageSquare,
   probabilites: Dice5,
   'statistique-descriptive': ChartColumn,
+  'computer-vision': Eye,
 }

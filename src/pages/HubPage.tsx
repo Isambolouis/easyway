@@ -12,6 +12,7 @@ const accents = {
   indigo: 'border-indigo-300 hover:border-indigo-500 bg-indigo-50 hover:shadow-indigo-500/10 dark:hover:border-indigo-400',
   emerald: 'border-emerald-300 hover:border-emerald-500 bg-emerald-50 hover:shadow-emerald-500/10 dark:hover:border-emerald-400',
   sky: 'border-sky-300 hover:border-sky-500 bg-sky-50 hover:shadow-sky-500/10 dark:hover:border-sky-400',
+  cyan: 'border-cyan-300 hover:border-cyan-500 bg-cyan-50 hover:shadow-cyan-500/10 dark:hover:border-cyan-400',
 }
 
 const iconBg = {
@@ -22,6 +23,7 @@ const iconBg = {
   indigo: 'bg-indigo-600 text-white',
   emerald: 'bg-emerald-600 text-white',
   sky: 'bg-sky-600 text-white',
+  cyan: 'bg-cyan-600 text-white',
 }
 
 const linkAccent = {
@@ -32,6 +34,7 @@ const linkAccent = {
   indigo: 'text-indigo-700 dark:text-indigo-300',
   emerald: 'text-emerald-700 dark:text-emerald-300',
   sky: 'text-sky-700 dark:text-sky-300',
+  cyan: 'text-cyan-700 dark:text-cyan-300',
 }
 
 export function HubPage() {
